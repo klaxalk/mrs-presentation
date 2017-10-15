@@ -1,0 +1,213 @@
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass{beamer}
+
+\mode<presentation> {
+
+  %%{ Themes
+
+  % \usetheme{default}
+  % \usetheme{AnnArbor}
+  % \usetheme{Antibes}
+  % \usetheme{Bergen}
+  % \usetheme{Berkeley}
+  % \usetheme{Berlin}
+  \usetheme{Boadilla}
+  % \usetheme{CambridgeUS}
+  % \usetheme{Copenhagen}
+  % \usetheme{Darmstadt}
+  % \usetheme{Dresden}
+  % \usetheme{Frankfurt}
+  % \usetheme{Goettingen}
+  % \usetheme{Hannover}
+  % \usetheme{Ilmenau}
+  % \usetheme{JuanLesPins}
+  % \usetheme{Luebeck}
+  % \usetheme{Madrid}
+  % \usetheme{Malmoe}
+  % \usetheme{Marburg}
+  % \usetheme{Montpellier}
+  % \usetheme{PaloAlto}
+  % \usetheme{Pittsburgh}
+  % \usetheme{Rochester}
+  % \usetheme{Singapore}
+  % \usetheme{Szeged}
+  % \usetheme{Warsaw}
+
+  %%}
+
+  %%{ Color themes
+
+  % \usecolortheme{albatross}
+  % \usecolortheme{beaver}
+  % \usecolortheme{beetle}
+  % \usecolortheme{crane}
+  % \usecolortheme{dolphin}
+  % \usecolortheme{dove}
+  % \usecolortheme{fly}
+  % \usecolortheme{lily}
+  % \usecolortheme{orchid}
+  % \usecolortheme{rose}
+  % \usecolortheme{seagull}
+  \usecolortheme{seahorse}
+  % \usecolortheme{whale}
+  % \usecolortheme{wolverine}
+
+  %%}
+
+  % \setbeamertemplate{footline} % remove the footer line
+  % \setbeamertemplate{footline}[page number] % replace the footer line with simple numbers
+
+  \setbeamertemplate{navigation symbols}{} % removing the navigation symbols
+}
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{multimedia}
+\newcommand{\superfill}{\vskip0pt plus 1filll}
+
+\usepackage{tikz}
+\usepackage{isotope}
+\usepackage{animate}
+\usetikzlibrary{shapes.arrows}
+
+%%{ ARROWS IN TIKZ
+
+\tikzset{
+  myarrow/.style={
+    draw,
+    fill=orange,
+    single arrow,
+    minimum height=3.5ex,
+    single arrow head extend=1ex
+  }
+}
+
+\newcommand{\arrowup}{%
+  \vspace{-0.8em}
+  \tikz [baseline=-0.5ex]{\node [myarrow,rotate=90] {};}
+  \vspace{-1.4em}
+}
+
+\newcommand{\arrowdown}{%
+  \vspace{-0.8em}
+  \tikz [baseline=-1ex]{\node [myarrow,rotate=-90] {};}
+  \vspace{-1.5em}
+}
+
+\newcommand{\arrowright}{%
+  \tikz [baseline=-1ex]{\node [myarrow,rotate=0] {};}
+}
+
+\newcommand{\arrowleft}{%
+  \tikz [baseline=-1ex]{\node [myarrow,rotate=180] {};}
+}
+
+%%}
+
+%%{ CHECKMARK IN TIKZ
+
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}
+
+%%}
+
+\newcommand{\unit}[2]{$#1~\ensuremath{\mathrm{#2}}$}
+\newcommand{\strong}[1]{\textbf{#1}}
+\newcommand{\coord}[1]{\textbf{#1}}
+\newcommand{\norm}[1]{\left\lvert#1\right\rvert}
+\newcommand{\m}[1]{\ensuremath{\mathbf{#1}}}
+\newcommand{\edn}[1]{{\color{blue} \textbf{#1}}}
+\newcommand{\TODO}[1]{\color{red}{#1}\color{black}}
+
+% \usepackage{pgf}
+% \logo{\pgfputat{\pgfxy(0,5)}{\pgfbox[right,base]{\includegraphics[height=0.8cm]{}}}}
+% \newcommand{\nologo}{\setbeamertemplate{logo}{}}
+
+% \usepackage{eso-pic}
+% \newcommand\AtPagemyUpperLeft[1]{\AtPageLowerLeft{\put(\LenToUnit{0.66\paperwidth},\LenToUnit{0.904\paperheight}){#1}}}
+% \AddToShipoutPictureFG{
+%   \AtPagemyUpperLeft{{\includegraphics[height=0.85cm,keepaspectratio]{fig/logo_ctu_fee_mrs_blue.png}}}
+% }
+% \newcommand{\AddToShipoutPictureFG}{\setbeamertemplate{logo}{}}
+
+%%{ TITLE PAGE
+
+
+\title[Mini title]{Title}
+
+\author[Tomas Baca]{Tomas Baca$^1$}
+\institute[CTU in Prague]
+{
+  \small Sub text\\
+  \vspace{1em}
+  \begin{tiny}
+    $^1$Multi-Robot Systems group, Faculty of Electrical Engineering\\
+    Czech Technical University in Prague\\
+  \end{tiny}
+  \medskip
+  \textit{tomas.baca@fel.cvut.cz}
+}
+\date{}
+
+\titlegraphic{\includegraphics[width=5cm]{fig/logo_ctu_fee_mrs_blue.png}}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage % Print the title page as the first slide
+\end{frame}
+
+% todo pix its placement on every page
+% \logo{%
+%   \makebox[1.0\textwidth]{%
+%     \hfill%
+%     \includegraphics[width=3.0cm, keepaspectratio]{fig/logo_ctu_fee_mrs_blue.png}\vspace{-200pt}
+%   }
+% }
+
+% \nologo
+
+%%}
+
+%{ TABLE OF CONTENTS
+% % is created automatically of \section{} and \subsection{} commands
+
+%}
+
+%%{ INTRODUCTION
+
+\section{Introduction}
+\subsection{Motivation}
+
+\begin{frame}
+  \frametitle{Outline}
+  \tableofcontents
+\end{frame}
+
+\begin{frame}
+  \frametitle{Outline}
+  \tableofcontents[currentsection]
+\end{frame}
+
+%%}
+
+%%{ REFERENCES
+
+\begin{frame}
+  \frametitle{References}
+  \tiny{
+    \begin{thebibliography}{99}
+
+      % \bibitem[Wulf, 2008]{p1} Wulf, Eric A., et al.
+      % \newblock MISTI imaging and source localization.
+      % \newblock Nuclear Science Symposium Conference Record, 2008. NSS'08. IEEE. IEEE, 2008.
+
+  \end{thebibliography}
+}
+\end{frame}
+
+%%}
+
+\end{document}

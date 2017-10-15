@@ -1,8 +1,6 @@
-%----------------------------------------------------------------------------------------
-%	PACKAGES AND THEMES
-%----------------------------------------------------------------------------------------
-
 \documentclass{beamer}
+
+%%{ HEADER
 
 \mode<presentation> {
 
@@ -14,7 +12,7 @@
   % \usetheme{Bergen}
   % \usetheme{Berkeley}
   % \usetheme{Berlin}
-  \usetheme{Boadilla}
+  % \usetheme{Boadilla}
   % \usetheme{CambridgeUS}
   % \usetheme{Copenhagen}
   % \usetheme{Darmstadt}
@@ -35,6 +33,8 @@
   % \usetheme{Singapore}
   % \usetheme{Szeged}
   % \usetheme{Warsaw}
+  % \usetheme{dbt}
+  \usetheme{ClassyCharcoal}
 
   %%}
 
@@ -51,14 +51,14 @@
   % \usecolortheme{orchid}
   % \usecolortheme{rose}
   % \usecolortheme{seagull}
-  \usecolortheme{seahorse}
+  % \usecolortheme{seahorse}
   % \usecolortheme{whale}
   % \usecolortheme{wolverine}
 
   %%}
 
   % \setbeamertemplate{footline} % remove the footer line
-  % \setbeamertemplate{footline}[page number] % replace the footer line with simple numbers
+  \setbeamertemplate{footline}[page number] % replace the footer line with simple numbers
 
   \setbeamertemplate{navigation symbols}{} % removing the navigation symbols
 }
@@ -71,47 +71,11 @@
 \usepackage{tikz}
 \usepackage{isotope}
 \usepackage{animate}
-\usetikzlibrary{shapes.arrows}
 
-%%{ ARROWS IN TIKZ
+% load tikz templates
+\include{tikz-templates/tikz-templates.tex}
 
-\tikzset{
-  myarrow/.style={
-    draw,
-    fill=orange,
-    single arrow,
-    minimum height=3.5ex,
-    single arrow head extend=1ex
-  }
-}
-
-\newcommand{\arrowup}{%
-  \vspace{-0.8em}
-  \tikz [baseline=-0.5ex]{\node [myarrow,rotate=90] {};}
-  \vspace{-1.4em}
-}
-
-\newcommand{\arrowdown}{%
-  \vspace{-0.8em}
-  \tikz [baseline=-1ex]{\node [myarrow,rotate=-90] {};}
-  \vspace{-1.5em}
-}
-
-\newcommand{\arrowright}{%
-  \tikz [baseline=-1ex]{\node [myarrow,rotate=0] {};}
-}
-
-\newcommand{\arrowleft}{%
-  \tikz [baseline=-1ex]{\node [myarrow,rotate=180] {};}
-}
-
-%%}
-
-%%{ CHECKMARK IN TIKZ
-
-\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}
-
-%%}
+%%{ CUSTOM COMMANDS
 
 \newcommand{\unit}[2]{$#1~\ensuremath{\mathrm{#2}}$}
 \newcommand{\strong}[1]{\textbf{#1}}
@@ -120,6 +84,8 @@
 \newcommand{\m}[1]{\ensuremath{\mathbf{#1}}}
 \newcommand{\edn}[1]{{\color{blue} \textbf{#1}}}
 \newcommand{\TODO}[1]{\color{red}{#1}\color{black}}
+
+%%}
 
 % \usepackage{pgf}
 % \logo{\pgfputat{\pgfxy(0,5)}{\pgfbox[right,base]{\includegraphics[height=0.8cm]{}}}}
@@ -132,10 +98,11 @@
 % }
 % \newcommand{\AddToShipoutPictureFG}{\setbeamertemplate{logo}{}}
 
+%%}
+
 %%{ TITLE PAGE
 
-
-\title[Mini title]{Title}
+\title[]{Text Editing as a Life Style}
 
 \author[Tomas Baca]{Tomas Baca$^1$}
 \institute[CTU in Prague]
@@ -171,25 +138,69 @@
 
 %%}
 
-%{ TABLE OF CONTENTS
-% % is created automatically of \section{} and \subsection{} commands
+%%{ TABLE OF CONTENTS
 
-%}
+% is created automatically of \section{} and \subsection{} commands
+
+%%}
 
 %%{ INTRODUCTION
 
 \section{Introduction}
-\subsection{Motivation}
 
 \begin{frame}
   \frametitle{Outline}
   \tableofcontents
 \end{frame}
 
+%%}
+
+%%{ Disclaimer
+
+\subsection{Disclaimer}
+
 \begin{frame}
-  \frametitle{Outline}
-  \tableofcontents[currentsection]
+\frametitle{Disclaimer}
+
+
 \end{frame}
+
+%%}
+
+%%{ THE IMMORTAL FILE FORMAT
+
+\subsection{The Immortal File Format}
+
+% \begin{frame}
+%   \frametitle{Outline}
+%   \tableofcontents[currentsection]
+% \end{frame}
+
+\begin{frame}
+\frametitle{The Immortal File Format}
+
+  \begin{block}{What is the immortal file format?}
+  
+  \end{block}
+
+\end{frame}
+
+%%{ Plain-text is Everywhere
+\begin{frame}
+\frametitle{Plain-text is Everywhere}
+
+
+\end{frame}
+%%}
+
+%%{ Text Viewing/Editing/Manipulation and ... Typing
+\begin{frame}
+\frametitle{Text Viewing/Editing/Manipulation and ... Typing}
+
+
+
+\end{frame}
+%%}
 
 %%}
 

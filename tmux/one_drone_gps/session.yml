@@ -1,0 +1,53 @@
+name: simulation
+root: ./
+
+startup_window: status
+pre_window: export UAV_NAME=uav1
+windows:
+  - roscore:
+      layout: even-vertical
+      panes:
+        - roscore
+  - gazebo:
+      layout: even-vertical
+      panes:
+        - waitForRos; roslaunch simulation simulation.launch gui:=true
+  - status:
+      layout: even-vertical
+      panes:
+        - waitForRos; roslaunch mrs_status status.launch
+  - spawn:
+      layout: even-vertical
+      panes:
+        - waitForSimulation; spawn 1 --run --delete --enable-rangefinder --enable-ground-truth
+  - control:
+      layout: even-vertical
+      panes:
+        - waitForOdometry; roslaunch mrs_uav_manager simulation_f550_gps.launch
+  - takeoff:
+      layout: even-vertical
+      panes:
+        #{ uav1
+        - 'waitForControl;
+          rosservice call /$UAV_NAME/mavros/cmd/arming 1;
+          rosservice call /$UAV_NAME/control_manager/motors 1;
+          rosservice call /$UAV_NAME/mavros/set_mode 0 offboard;
+          rosservice call /$UAV_NAME/uav_manager/takeoff'
+        #}
+  - goto:
+      layout: even-vertical
+      panes:
+        - 'history -s rosservice call /$UAV_NAME/control_manager/goto \"goal: \[0.0, 10.0, 1.5, 0.0\]\"'
+  - gazebo_camera_follow:
+      layout: even-vertical
+      panes:
+        - waitForOdometry; gz camera -c gzclient_camera -f uav1; history -s gz camera -c gzclient_camera -f uav1
+  - rviz:
+      layout: even-vertical
+      panes:
+        - waitForControl; roslaunch mrs_testing rviz_uav1.launch
+        - waitForControl; roslaunch mrs_rviz_plugins load_f550_robot.launch
+  - layout:
+      layout: even-vertical
+      panes:
+        - waitForControl; sleep 4; ~/.i3/layout_manager.sh layout

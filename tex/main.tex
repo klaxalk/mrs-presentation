@@ -232,16 +232,6 @@
 \begin{frame}
   \frametitle{Control -- theory POW}
 
-
-\end{frame}
-%%}
-
-\subsection{implementation point of view}
-
-%%{ Control pipeline implementation
-\begin{frame}
-  \frametitle{Control -- implementation POW}
-
   \centering
   \begin{figure}
     \begin{adjustbox}{max totalsize={1.0\textwidth}{.85\textheight}, center}
@@ -252,6 +242,15 @@
     \begin{block}{\cite{iros}}
       Model Predictive Trajectory Tracking and Collision Avoidance for Reliable Outdoor Deployment of Unmanned Aerial Vehicles, IROS 2018.
     \end{block}
+
+\end{frame}
+%%}
+
+\subsection{implementation point of view}
+
+%%{ Control pipeline implementation
+\begin{frame}
+  \frametitle{Control -- implementation POW}
 
 \end{frame}
 %%}
@@ -267,17 +266,23 @@
 \begin{frame}
   \frametitle{Linux terminal \& shell}
 
-
+  \begin{figure}
+    \caption{A Linux terminal}
+    \includegraphics[width=1.0\textwidth]{./fig/terminal.png}
+  \end{figure}
 
 \end{frame}
 %%}
 
-%%{ TMUX & Terminal multiplexer
+%%{ Tmux & Terminal multiplexer
 \begin{frame}
 
-  \frametitle{TMUX -- Terminal multiplexer}
+  \frametitle{Tmux -- Terminal multiplexer}
 
-
+  \begin{figure}
+    \caption{A Linux terminal with Tmux}
+    \includegraphics[width=1.0\textwidth]{./fig/tmux.png}
+  \end{figure}
 
 \end{frame}
 %%}
@@ -286,7 +291,10 @@
 \begin{frame}
   \frametitle{Vim -- modal, modular, modern}
 
-
+  \begin{figure}
+    \caption{Vim in Tmux in Terminal}
+    \includegraphics[width=1.0\textwidth]{./fig/vim.png}
+  \end{figure}
 
 \end{frame}
 %%}
@@ -295,7 +303,14 @@
 \begin{frame}
   \frametitle{ROS -- Robot Operating System}
 
-
+  \begin{itemize}
+    \item Middleware allowing communication between programs
+    \item Makes the transition from \emph{Matlab} to reality bearable
+    \item Supported by sensor manufacturers (lots of ROS drivers)
+    \item Integration through the terminal (important, works over ssh)
+    \item Handles the difficult stuff nobody that wants to program: time management, logging, recording onboard data, common visualization, parameter loading, static and dynamic transformations, etc.
+    \item integrates to most robotic simulators: Gazebo, Vrap
+  \end{itemize}
 
 \end{frame}
 %%}

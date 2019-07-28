@@ -5,28 +5,28 @@
 
 \begin{tikzpicture}[->,>=stealth', node distance=3.3cm]
 
-  \node[state, shift = {(0.0, 0.0)}] (user_software) {
+  \node[state_gray, shift = {(0.0, 0.0)}] (user_software) {
       \begin{tabular}{c}
         \small Mission \\
         \small planner
       \end{tabular}
     };
 
-  \node[state, right of = user_software, shift = {(0.6, 0.0)}] (collision_avoidance) {
+  \node[state_gray, right of = user_software, shift = {(0.6, 0.0)}] (collision_avoidance) {
       \begin{tabular}{c}
         \small Collision \\
         \small avoidance
       \end{tabular}
     };
 
-  \node[state, right of = collision_avoidance, shift = {(0, -0)}] (mpc_tracker) {
+  \node[state_gray, right of = collision_avoidance, shift = {(0, -0)}] (mpc_tracker) {
       \begin{tabular}{c}
         \small MPC \\
         \small tracker
       \end{tabular}
     };
 
-  \node[state, right of = mpc_tracker, shift = {(0, -0)}] (so3_controller) {
+  \node[state_gray, right of = mpc_tracker, shift = {(0, -0)}] (so3_controller) {
       \begin{tabular}{c}
         \small State \\
         \small feedback
@@ -47,7 +47,7 @@
       \end{tabular}
     };
 
-  \node[state, below of = so3_controller, shift = {(0, 0.5)}] (state_observer) {
+  \node[state_gray, below of = so3_controller, shift = {(0, 0.5)}] (state_observer) {
       \begin{tabular}{c}
         \small State \\
         \small observer

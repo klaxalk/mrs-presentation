@@ -239,9 +239,9 @@
     \end{adjustbox}
   \end{figure}
 
-    \begin{block}{\cite{iros}}
-      Model Predictive Trajectory Tracking and Collision Avoidance for Reliable Outdoor Deployment of Unmanned Aerial Vehicles, IROS 2018.
-    \end{block}
+  \begin{block}{\cite{iros}}
+    Model Predictive Trajectory Tracking and Collision Avoidance for Reliable Outdoor Deployment of Unmanned Aerial Vehicles, IROS 2018.
+  \end{block}
 
 \end{frame}
 %%}
@@ -251,6 +251,13 @@
 %%{ Control pipeline implementation
 \begin{frame}
   \frametitle{Control -- implementation POW}
+
+  \centering
+  \begin{figure}
+    \begin{adjustbox}{max totalsize={1.0\textwidth}{.85\textheight}, center}
+      \input{fig/implementation_diagram.tex}
+    \end{adjustbox}
+  \end{figure}
 
 \end{frame}
 %%}
@@ -346,27 +353,43 @@
 \subsection{running the planner, w/ and w/o ROS}
 
 \subsection{running the simulation}
-%%{ Frame title
-\begin{frame}
-  \frametitle{}
-
-
-
-\end{frame}
-%%}
 
 %% --------------------------------------------------------------
 %% |                          resources                         |
 %% --------------------------------------------------------------
+
+%%{ MRS wiki
+\begin{frame}
+  \frametitle{MRS wiki}
+
+  \begin{figure}
+    \caption*{\url{https://mrs.felk.cvut.cz/gitlab/uav/uav_core/wikis/home}}
+    \includegraphics[width=0.9\textwidth]{./fig/wiki.png}
+  \end{figure}
+
+\end{frame}
+%%}
+
+%%{ MRS Cheat Sheet
+\begin{frame}
+  \frametitle{MRS Cheat Sheet}
+
+  \begin{figure}
+    \caption*{\url{https://github.com/klaxalk/mrs-cheatsheet}}
+    \includegraphics[width=0.9\textwidth]{./fig/mrs_cheatsheet.png}
+  \end{figure}
+
+\end{frame}
+%%}
 
 %%{ Links
 \begin{frame}
   \frametitle{Links}
 
   \begin{itemize}
-    \item Linux setup --
-    \item MRS cheat sheet --
-    \item This presentation --
+    \item Linux setup -- \\\url{https://github.com/klaxalk/linux-setup}
+    \item MRS cheat sheet -- \\\url{https://github.com/klaxalk/mrs-cheatsheet}
+    \item This presentation -- \\\url{https://github.com/klaxalk/mrs-presentation}
   \end{itemize}
 
 \end{frame}

@@ -1,44 +1,44 @@
 \documentclass{beamer}
 
-%%{ HEADER
+%%{ header
 
 \mode<presentation> {
 
-  %%{ Themes
+  %%{ themes
 
   % \usetheme{default}
-  % \usetheme{AnnArbor}
-  % \usetheme{Antibes}
-  % \usetheme{Bergen}
-  % \usetheme{Berkeley}
-  % \usetheme{Berlin}
-  % \usetheme{Boadilla}
-  % \usetheme{CambridgeUS}
-  % \usetheme{Copenhagen}
-  % \usetheme{Darmstadt}
-  % \usetheme{Dresden}
-  % \usetheme{Frankfurt}
-  % \usetheme{Goettingen}
-  % \usetheme{Hannover}
-  % \usetheme{Ilmenau}
-  % \usetheme{JuanLesPins}
-  % \usetheme{Luebeck}
-  % \usetheme{Madrid}
-  % \usetheme{Malmoe}
-  % \usetheme{Marburg}
-  % \usetheme{Montpellier}
-  % \usetheme{PaloAlto}
-  % \usetheme{Pittsburgh}
-  % \usetheme{Rochester}
-  % \usetheme{Singapore}
-  % \usetheme{Szeged}
-  % \usetheme{Warsaw}
+  % \usetheme{annarbor}
+  % \usetheme{antibes}
+  % \usetheme{bergen}
+  % \usetheme{berkeley}
+  % \usetheme{berlin}
+  % \usetheme{boadilla}
+  % \usetheme{cambridgeus}
+  % \usetheme{copenhagen}
+  % \usetheme{darmstadt}
+  % \usetheme{dresden}
+  % \usetheme{frankfurt}
+  % \usetheme{goettingen}
+  % \usetheme{hannover}
+  % \usetheme{ilmenau}
+  % \usetheme{juanlespins}
+  % \usetheme{luebeck}
+  % \usetheme{madrid}
+  % \usetheme{malmoe}
+  % \usetheme{marburg}
+  % \usetheme{montpellier}
+  % \usetheme{paloalto}
+  % \usetheme{pittsburgh}
+  % \usetheme{rochester}
+  % \usetheme{singapore}
+  % \usetheme{szeged}
+  % \usetheme{warsaw}
   % \usetheme{dbt}
   \usetheme{ClassyCharcoal}
 
   %%}
 
-  %%{ Color themes
+  %%{ color themes
 
   % \usecolortheme{albatross}
   % \usecolortheme{beaver}
@@ -61,21 +61,30 @@
   \setbeamertemplate{footline}[page number] % replace the footer line with simple numbers
 
   \setbeamertemplate{navigation symbols}{} % removing the navigation symbols
+
+  \setbeamertemplate{section in toc}[square] % change the style of entries in the tableofcontents
+  \setbeamertemplate{subsection in toc}[square] % change the style of entries in the tableofcontents
 }
 
-\usepackage{graphicx} % Allows including images
-\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{graphicx} % allows including images
+\usepackage{booktabs} % allows the use of \toprule, \midrule and \bottomrule in tables
 \usepackage{multimedia}
 \newcommand{\superfill}{\vskip0pt plus 1filll}
 
 \usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
 \usepackage{isotope}
+\usepackage{transparent} % typesetting units
 \usepackage{animate}
+\usepackage{adjustbox}
+\usepackage{subcaption}
+\usepackage{float}
 
 % load tikz templates
-\include{tikz-templates/tikz-templates.tex}
+\include{tikz-templates/tikz-templates}
 
-%%{ CUSTOM COMMANDS
+%%{ custom commands
 
 \newcommand{\unit}[2]{$#1~\ensuremath{\mathrm{#2}}$}
 \newcommand{\strong}[1]{\textbf{#1}}
@@ -83,28 +92,27 @@
 \newcommand{\norm}[1]{\left\lvert#1\right\rvert}
 \newcommand{\m}[1]{\ensuremath{\mathbf{#1}}}
 \newcommand{\edn}[1]{{\color{blue} \textbf{#1}}}
-\newcommand{\TODO}[1]{\color{red}{#1}\color{black}}
+\newcommand{\todo}[1]{\color{red}{#1}\color{black}}
 
 %%}
 
-% \usepackage{pgf}
-% \logo{\pgfputat{\pgfxy(0,5)}{\pgfbox[right,base]{\includegraphics[height=0.8cm]{}}}}
-% \newcommand{\nologo}{\setbeamertemplate{logo}{}}
+\logo{\pgfputat{\pgfxy(0,5)}{\pgfbox[right,base]{\includegraphics[height=0.8cm]{}}}}
+\newcommand{\nologo}{\setbeamertemplate{logo}{}}
 
-% \usepackage{eso-pic}
-% \newcommand\AtPagemyUpperLeft[1]{\AtPageLowerLeft{\put(\LenToUnit{0.66\paperwidth},\LenToUnit{0.904\paperheight}){#1}}}
-% \AddToShipoutPictureFG{
-%   \AtPagemyUpperLeft{{\includegraphics[height=0.85cm,keepaspectratio]{fig/logo_ctu_fee_mrs_blue.png}}}
-% }
-% \newcommand{\AddToShipoutPictureFG}{\setbeamertemplate{logo}{}}
+\usepackage{eso-pic}
+\newcommand\AtPagemyUpperLeft[1]{\AtPageLowerLeft{\put(\LenToUnit{0.66\paperwidth},\LenToUnit{0.904\paperheight}){#1}}}
+\AddToShipoutPictureFG{
+  \AtPagemyUpperLeft{{\includegraphics[height=0.85cm,keepaspectratio]{fig/logo_ctu_fee_mrs_blue.png}}}
+}
+\newcommand{\AddToShipoutPictureFG}{\setbeamertemplate{logo}{}}
 
 %%}
 
 %%{ TITLE PAGE
 
-\title[]{Text Editing as a Life Style \\ \small{Have you heard about Vim?}}
+\title[]{Unmanned Aerial Platform in the MRS Lab \\ \small{From control theory to application}}
 
-\author[Tomas Baca]{Tomas Baca$^1$}
+\author[Tomas Baca]{Tomas Baca$^1$, Vojtech Spurny$^1$}
 \institute[CTU in Prague]
 {
   \\
@@ -126,7 +134,7 @@
   \titlepage % Print the title page as the first slide
 \end{frame}
 
-% todo pix its placement on every page
+% % todo pix its placement on every page
 % \logo{%
 %   \makebox[1.0\textwidth]{%
 %     \hfill%
@@ -140,14 +148,6 @@
 
 %%{ TABLE OF CONTENTS
 
-% is created automatically of \section{} and \subsection{} commands
-
-%%}
-
-%%{ INTRODUCTION
-
-\section{Introduction}
-
 \begin{frame}
   \frametitle{Outline}
   \tableofcontents
@@ -155,115 +155,206 @@
 
 %%}
 
-%%{ DISCLAIMER
+%% --------------------------------------------------------------
+%% |                   a little bit of history                  |
+%% --------------------------------------------------------------
 
-\subsection{Disclaimer}
+%%{ A little bit of history
+
+\section{A little bit of history}
 
 \begin{frame}
-  \frametitle{Disclaimer}
+  \frametitle{A little bit of history}
 
+  \only<+>{\begin{figure}
+      \caption{$\approx$ 2012, designing custom PCBs for controllers}
+      \includegraphics[width=0.85\textwidth]{./fig/pcb1.jpg}
+  \end{figure}}
+
+  \only<+>{\begin{figure}
+      \caption{$\approx$ 2014, Model Predictive Control on embedded hardware}
+      \includegraphics[width=0.85\textwidth]{./fig/pcb2.jpg}
+  \end{figure}}
+
+  \only<+>{\begin{figure}
+      \caption{$\approx$ 2014, Model Predictive Control on embedded hardware}
+      \includegraphics[width=0.85\textwidth]{./fig/tricopter.jpg}
+  \end{figure}}
+
+  \only<+>{\begin{block}{Embedded Model Predictive Control}
+      \begin{center}
+        \movie[externalviewer]{
+          \includegraphics[width=0.9\textwidth]{./fig/embedded_mpc_thumbnail.jpg}
+        }{../videos/embedded_mpc.mp4}\\
+        Video: \url{https://youtu.be/AXI_rkQRBaE}
+      \end{center}
+  \end{block}}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{A little bit of history}
+
+  \begin{itemize}
+    \onslide<1->{\item Custom and purpose-built hardware}
+    \onslide<2->{\item Embedded software}
+    \onslide<3->{\item Results: \\ Embedded MPC \cite{mmar_mpc}\\ Multi-robot publications: \cite{mmar_spurny}, \cite{auro}}
+    \onslide<4->{\item ...}
+    \onslide<5->{\item Not Scalable! Bottlenecks everywhere:}
+    \onslide<6->{\item Embedded programming \emph{sucks}, simulations are difficult, system is hard to maintain, connecting sensors and peripheries is limited...}
+    \onslide<7->{\item ... 2015}
+\end{itemize}
 
 \end{frame}
 
 %%}
 
-%%{ HOW WE USE A COMPUTER
-
-\subsection{How we use a computer}
-
-% \begin{frame}
-%   \frametitle{Outline}
-%   \tableofcontents[currentsection]
-% \end{frame}
-
+%%{ Nowadays
 \begin{frame}
-  \frametitle{How we use a computer}
+  \frametitle{Nowadays}
 
-  \begin{block}{Content consumption}
-    \begin{itemize}
-      \item browsing web, viewing text, images, and videos
-    \end{itemize} 
-  \end{block}
-
-  \begin{block}{Work with dedicated software}
-    \begin{itemize}
-      \item Matlab (Simulink), NetBeans, Simulation tools
-    \end{itemize} 
-  \end{block}
-
-  \begin{block}{Content creation - multimedia}
-    \begin{itemize}
-      \item image, video and sound editing, 3D modeling, graphics design
-    \end{itemize} 
-  \end{block}
-
-  \only<1>{\begin{block}{Content creation - text}}
-    \only<2>{\begin{alertblock}{Creating content - text}}
-      \begin{itemize}
-        \item taking notes
-        \item scripting, programming
-        \item writing papers, articles
-        \item UNIX system administration
-      \end{itemize} 
-    \only<2>{\end{alertblock}}
-  \only<1>{\end{block}}
+  \begin{figure}
+    \caption{A typical pipeline structure revolves around a Linux computer.}
+    \includegraphics[width=1.0\textwidth]{./fig/components.png}
+  \end{figure}
 
 \end{frame}
+%%}
 
-%%{ Plain-text is Everywhere
+%% --------------------------------------------------------------
+%% |                    UAV control pipeline                    |
+%% --------------------------------------------------------------
+
+\section{UAV Control pipeline}
+\subsection{control theory point of view}
+
+%%{ UAV control pipepline
 \begin{frame}
-  \frametitle{Plain-text is Everywhere}
+  \frametitle{Control -- theory POW}
 
 
 \end{frame}
 %%}
 
-%%{ Text Viewing/Editing/Manipulation and ... Typing
+\subsection{implementation point of view}
+
+%%{ Control pipeline implementation
 \begin{frame}
-  \frametitle{Text Viewing/Editing/Manipulation and ... Typing}
+  \frametitle{Control -- implementation POW}
 
+  \centering
+  \begin{figure}
+    \begin{adjustbox}{max totalsize={1.0\textwidth}{.85\textheight}, center}
+      \input{fig/pipeline_diagram.tex}
+    \end{adjustbox}
+  \end{figure}
 
+    \begin{block}{\cite{iros}}
+      Model Predictive Trajectory Tracking and Collision Avoidance for Reliable Outdoor Deployment of Unmanned Aerial Vehicles, IROS 2018.
+    \end{block}
 
 \end{frame}
 %%}
 
-%%}
+%% --------------------------------------------------------------
+%% |                      Linux environment                     |
+%% --------------------------------------------------------------
 
-%%{ THE IMMORTAL FILE FORMAT
+\section{Linux technologies}
+\subsection{terminal, shell, TMUX, Vim, ROS}
 
-\subsection{The Immortal File Format}
-
-% \begin{frame}
-%   \frametitle{Outline}
-%   \tableofcontents[currentsection]
-% \end{frame}
-
+%%{ Linux terminal & shell
 \begin{frame}
-  \frametitle{The Immortal File Format}
-
-  \begin{block}{File formats}
-    jpg, doc, pdf, svg, odt
-  \end{block}
-
-\end{frame}
-
-%%{ Plain-text is Everywhere
-\begin{frame}
-  \frametitle{Plain-text is Everywhere}
-
-
-\end{frame}
-%%}
-
-%%{ Text Viewing/Editing/Manipulation and ... Typing
-\begin{frame}
-  \frametitle{Text Viewing/Editing/Manipulation and ... Typing}
+  \frametitle{Linux terminal \& shell}
 
 
 
 \end{frame}
 %%}
 
+%%{ TMUX & Terminal multiplexer
+\begin{frame}
+
+  \frametitle{TMUX -- Terminal multiplexer}
+
+
+
+\end{frame}
+%%}
+
+%%{ Vim -- modal, modular, modern
+\begin{frame}
+  \frametitle{Vim -- modal, modular, modern}
+
+
+
+\end{frame}
+%%}
+
+%%{ ROS -- Robot Operating System
+\begin{frame}
+  \frametitle{ROS -- Robot Operating System}
+
+
+
+\end{frame}
+%%}
+
+%% | ---------------------- The simulator --------------------- |
+
+\section{MRS simulation stack}
+
+\subsection{Gazebo/ROS, spawn}
+
+%%{ Gazebo/ROS simulator
+\begin{frame}
+  \frametitle{Gazebo/ROS simulator}
+
+
+
+\end{frame}
+%%}
+
+%%{ Spawning drones to the simulator
+\begin{frame}
+  \frametitle{Spawning drones to the simulator}
+
+
+
+\end{frame}
+%%}
+
+%% | ------------------ Seminars assignments ------------------ |
+
+\section{Summer School seminar}
+\subsection{the MTSPN problem}
+\subsection{running the planner, w/ and w/o ROS}
+
+\subsection{running the simulation}
+%%{ Frame title
+\begin{frame}
+  \frametitle{}
+
+
+
+\end{frame}
+%%}
+
+%% --------------------------------------------------------------
+%% |                          resources                         |
+%% --------------------------------------------------------------
+
+%%{ Links
+\begin{frame}
+  \frametitle{Links}
+
+  \begin{itemize}
+    \item Linux setup --
+    \item MRS cheat sheet --
+    \item This presentation --
+  \end{itemize}
+
+\end{frame}
 %%}
 
 %%{ REFERENCES
@@ -273,14 +364,26 @@
   \tiny{
     \begin{thebibliography}{99}
 
-      % \bibitem[Wulf, 2008]{p1} Wulf, Eric A., et al.
-      % \newblock MISTI imaging and source localization.
-      % \newblock Nuclear Science Symposium Conference Record, 2008. NSS'08. IEEE. IEEE, 2008.
+      \bibitem[Baca et al., 2016]{mmar_mpc} Baca, T and Loianno, G and Saska, M
+      \newblock Embedded Model Predictive Control of Unmanned Micro Aerial Vehicles
+      \newblock 2016 IEEE International Conference on Methods and Models in Automation
 
-    \end{thebibliography}
-  }
+      \bibitem[Spurny et al., 2016]{mmar_spurny} Spurny, V and Baca, T and Saska, M
+      \newblock Complex manoeuvres of heterogeneous MAV-UGV formations using a model predictive control
+      \newblock 2016 IEEE International Conference on Methods and Models in Automation
+
+      \bibitem[Saska et al, 2016]{auro} Saska, M and Baca, T and Thomas, J and Chudoba, J and Preucil, L and Krajnik, T and Faigl, J and Loianno, G and Kumar, V
+      \newblock System for deployment of groups of unmanned micro aerial vehicles in GPS-denied environments using onboard visual relative localization
+      \newblock Autonomous Robots, 2016
+
+      \bibitem[Baca et al., 2018]{iros} Baca, T and Hert, D and Loianno, G and Saska, M and Kumar, V
+      \newblock Model Predictive Trajectory Tracking and Collision Avoidance for Reliable Outdoor Deployment of Unmanned Aerial Vehicles
+      \newblock 2018 IEEE/RSJ International Conference on Intelligent Robots and Systems
+
+  \end{thebibliography}
+}
 \end{frame}
 
 %%}
 
-\end{document}
+  \end{document}

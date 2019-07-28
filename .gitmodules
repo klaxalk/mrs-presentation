@@ -1,3 +1,0 @@
-[submodule "tex/tikz-templates"]
-	path = tex/tikz-templates
-	url = git@github.com:klaxalk/tikz-templates.git

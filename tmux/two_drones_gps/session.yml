@@ -63,8 +63,8 @@ windows:
   - rviz:
       layout: even-vertical
       panes:
-        - waitForControl; export UAV_NAME=uav1; roslaunch mrs_rviz_plugins load_f550_robot.launch
-        - waitForControl; export UAV_NAME=uav2; roslaunch mrs_rviz_plugins load_f550_robot.launch
+        - waitForOdometry; export UAV_NAME=uav1; roslaunch mrs_rviz_plugins load_f550_robot.launch
+        - waitForOdometry; export UAV_NAME=uav2; roslaunch mrs_rviz_plugins load_f550_robot.launch
         - waitForControl; roslaunch mrs_testing rviz_uav1.launch
   - layout:
       layout: even-vertical

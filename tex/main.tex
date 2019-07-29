@@ -218,7 +218,7 @@
 
 %%{ Nowadays
 \begin{frame}
-  \frametitle{Nowadays}
+  \frametitle{Nowadays -- the system structure}
 
   \begin{block}{A typical pipeline structure revolves around a Linux computer.}
     \begin{figure}
@@ -374,13 +374,68 @@
 
 %%{ Control pipeline implementation
 \begin{frame}
-  \frametitle{Control -- implementation POW}
-
   \centering
   \begin{figure}
-    \begin{adjustbox}{max totalsize={1.0\textwidth}{.85\textheight}, center}
-      \input{fig/implementation_diagram.tex}
-    \end{adjustbox}
+
+    \frametitle{Control -- implementation POW}
+
+    \only<+>{
+      \vspace{-1.5em}
+      \begin{adjustbox}{max totalsize={1.0\textwidth}{.95\textheight}, center}
+        \input{fig/implementation_diagram.tex}
+      \end{adjustbox}
+    }
+
+    \only<+>{
+      \frametitle{Control -- implementation POW}
+      \vspace{-1em}
+      \begin{adjustbox}{max totalsize={0.95\textheight}{.65\textwidth}, angle=90}
+        \input{fig/implementation_diagram.tex}
+      \end{adjustbox}
+    }
+
+    \only<+>{
+      \vspace{-1.5em}
+      \begin{adjustbox}{max totalsize={1.0\textwidth}{.95\textheight}, center}
+        \input{fig/implementation_diagram.tex}
+      \end{adjustbox}
+    }
+
+    \only<+>{
+      \vspace{-1.5em}
+      \begin{adjustbox}{max totalsize={1.0\textwidth}{.95\textheight}, center}
+        \input{fig/implementation_diagram_odom.tex}
+      \end{adjustbox}
+    }
+
+    \only<+>{
+      \vspace{-1.5em}
+      \begin{adjustbox}{max totalsize={1.0\textwidth}{.95\textheight}, center}
+        \input{fig/implementation_diagram_control.tex}
+      \end{adjustbox}
+    }
+
+    \only<+>{
+      \vspace{-1.0em}
+      \begin{adjustbox}{max totalsize={1.0\textwidth}{.95\textheight}, center}
+        \input{fig/implementation_diagram_control_2.tex}
+      \end{adjustbox}
+    }
+
+    \only<+>{
+      \vspace{-1.0em}
+      \begin{adjustbox}{max totalsize={1.0\textwidth}{.95\textheight}, center}
+        \input{fig/implementation_diagram_control_3.tex}
+      \end{adjustbox}
+    }
+
+    \only<+>{
+      \vspace{-1.5em}
+      \begin{adjustbox}{max totalsize={1.0\textwidth}{.95\textheight}, center}
+        \input{fig/implementation_diagram.tex}
+      \end{adjustbox}
+    }
+
   \end{figure}
 
 \end{frame}
@@ -606,7 +661,7 @@
 
 %%{ Plotting the trajectory in RVIZ
 \begin{frame}
-\frametitle{Plotting the trajectory in RVIZ}
+  \frametitle{Plotting the trajectory in RVIZ}
 
   \begin{figure}
     \includegraphics[width=1.0\textwidth]{./fig/rviz_1.png}
@@ -617,7 +672,7 @@
 
 %%{ Plotting the trajectory in RVIZ
 \begin{frame}
-\frametitle{Showing Results in RVIZ}
+  \frametitle{Showing Results in RVIZ}
 
   \begin{figure}
     \includegraphics[width=1.0\textwidth]{./fig/rviz_2.png}

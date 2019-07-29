@@ -173,27 +173,27 @@
       \end{tabular}
     };
 
-    % \begin{pgfonlayer}{background}
-    %   \path (so3_controller.east |- so3_controller.north)+(+0.3, 0.3) node (a) {};
-    %   \path (attitude_controller.south -| so3_controller.west)+(-0.3,-0.3) node (b) {};
-    %   \path[fill=black!70, draw=black!50, dashed]
-    %   (a) rectangle (b);
-    %   \path (a) -- node [midway, shift = {(-5.5, -1.0)}] {\begin{tabular}{c}
-    %       \small Controllers\\
-    %       \small (ROS Plugins)
-    %   \end{tabular}} (a);
-    % \end{pgfonlayer}
+    \begin{pgfonlayer}{background}
+      \path (so3_controller.east |- so3_controller.north)+(+0.3, 0.3) node (a) {};
+      \path (attitude_controller.south -| so3_controller.west)+(-0.3,-0.3) node (b) {};
+      \path[fill=black!70, draw=black!50, dashed]
+      (a) rectangle (b);
+      \path (b) -- node [midway, shift = {(0.0, -3.2)}] {\begin{tabular}{c}
+          \small Controllers\\
+          \small (ROS Plugins)
+      \end{tabular}} (a);
+    \end{pgfonlayer}
 
-    % \begin{pgfonlayer}{background}
-    %   \path (landoff_tracker.east |- landoff_tracker.north)+(+0.3, 0.3) node (a) {};
-    %   \path (csv_tracker.south -| landoff_tracker.west)+(-0.3,-0.3) node (b) {};
-    %   \path[fill=black!70, draw=black!50, dashed]
-    %   (a) rectangle (b);
-    %   \path (a) -- node [midway, shift = {(1.5, -1.0)}] {\begin{tabular}{c}
-    %       \small Trackers\\
-    %       \small (ROS Plugins)
-    %   \end{tabular}} (a);
-    % \end{pgfonlayer}
+    \begin{pgfonlayer}{background}
+      \path (landoff_tracker.east |- landoff_tracker.north)+(+0.3, 0.3) node (a) {};
+      \path (csv_tracker.south -| landoff_tracker.west)+(-0.3,-0.3) node (b) {};
+      \path[fill=black!70, draw=black!50, dashed]
+      (a) rectangle (b);
+      \path (b) -- node [midway, shift = {(0.0, -3.2)}] {\begin{tabular}{c}
+          \small Trackers\\
+          \small (ROS Plugins)
+      \end{tabular}} (a);
+    \end{pgfonlayer}
 
     %% | ---------- connections from sensors to odometry ---------- |
     \path[-] ($(rplidar.north)$) edge [->] ($(odometry.south) + (-1em, 0)$);

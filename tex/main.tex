@@ -105,15 +105,15 @@
 \AddToShipoutPictureFG{
   \AtPagemyUpperLeft{{\includegraphics[height=0.85cm,keepaspectratio]{fig/logo_ctu_fee_mrs_blue.png}}}
 }
-\newcommand{\AddToShipoutPictureFG}{\setbeamertemplate{logo}{}}
+% \newcommand{\AddToShipoutPictureFG}{\setbeamertemplate{logo}{}}
 
 %%}
 
 %%{ TITLE PAGE
 
-\title[]{Unmanned Aerial Platform in the MRS Lab \\ \small{From control theory to application}}
+\title[]{Introduction to the Unmanned Aerial Platform in the MRS Lab \\ \small{From control theory to practical experiments}}
 
-\author[Tomas Baca]{Tomas Baca$^1$, Vojtech Spurny$^1$}
+\author[Tomas Baca]{Tomas Baca$^1$, Robert Penicka$^1$, Vojtech Spurny$^1$}
 \institute[CTU in Prague]
 {
   \\
@@ -207,9 +207,8 @@
     \onslide<2->{\item Embedded software}
     \onslide<3->{\item Results: \\ Embedded MPC \cite{mmar_mpc}\\ Multi-robot publications: \cite{mmar_spurny}, \cite{auro}}
     \onslide<4->{\item ...}
-    \onslide<5->{\item Not Scalable! Bottlenecks everywhere:}
-    \onslide<6->{\item Embedded programming \emph{sucks}, simulations are difficult, system is hard to maintain, connecting sensors and peripheries is limited...}
-    \onslide<7->{\item ... 2015}
+    \onslide<5->{\item Not Scalable! Bottlenecks everywhere: Embedded programming \emph{sucks}, simulations are difficult, system is hard to maintain, connecting sensors and peripheries is limited...}
+    \onslide<6->{\item ... 2015}
 \end{itemize}
 
 \end{frame}
@@ -238,7 +237,7 @@
 
 %%{ UAV control pipepline
 \begin{frame}
-  \frametitle{Control -- theory POW}
+  \frametitle{Control -- theory PoV}
 
   \begin{figure}
     \begin{adjustbox}{max totalsize={1.0\textwidth}{.85\textheight}, center}
@@ -340,7 +339,7 @@
 
 %%}
 
-%%{ Frame title
+%%{ From theory to practical experiments
 \begin{frame}
   \frametitle{From theory to practical experiments}
 
@@ -350,12 +349,14 @@
     \begin{block}{What needs to be solved outside of Matlab's sandbox?}
       \begin{itemize}
         \item crashes are expensive, so don't crash
-        \item sensors can disconnected during the flight
-        \item takeoff and landing: the most tricky part of the flight
-        \item mass (thus UAV's model) can change during the flight
+        \item control references might not be feasible
+        \item sensors can get disconnected during the flight
+        \item takeoff and landing: \textbf{the most tricky part of the flight}
+        \item mass (thus the model) can change during the flight
         \item controllers can be poorly tuned... handle instabilities
         \item acceleration and speed depends on the available sensors
-        \item people are erroneous, don't let the crash the drone
+        \item people are erroneous, don't let them crash the drone
+        \item not all states of UAV are allowed, despite controllers can reach them (upside down)
       \end{itemize}
     \end{block}
 
@@ -372,12 +373,35 @@
 
 %%}
 
+%%{ ROS -- Robot Operating System
+
+\begin{frame}
+  \frametitle{ROS -- Robot Operating System}
+
+  \begin{itemize}
+    \item Middleware allowing communication between programs
+    \item Integrates with Cpp, Python, Bash and Zsh
+    \item Makes the transition from \emph{Matlab} to reality bearable
+    \item Supported by sensor manufacturers (lots of ROS drivers)
+    \item Integration through the terminal (important, works over ssh)
+    \item Handles the difficult stuff that nobody wants to program: time and clock management, logging, recording onboard data, basic visualization, parameter loading, static and dynamic transformations, etc.
+    \item integrates to robotic simulators: Gazebo, V-REP
+  \end{itemize}
+
+  \begin{figure}
+    \includegraphics[width=0.3\textwidth]{./fig/ros_logo.png}
+  \end{figure}
+
+\end{frame}
+
+%%}
+
 %%{ Control pipeline implementation
 \begin{frame}
   \centering
   \begin{figure}
 
-    \frametitle{Control -- implementation POW}
+    \frametitle{Control -- implementation PoV}
 
     \only<+>{
       \vspace{-1.5em}
@@ -387,7 +411,7 @@
     }
 
     \only<+>{
-      \frametitle{Control -- implementation POW}
+      \frametitle{Control -- implementation PoV}
       \vspace{-1em}
       \begin{adjustbox}{max totalsize={0.95\textheight}{.65\textwidth}, angle=90}
         \input{fig/implementation_diagram.tex}
@@ -436,6 +460,13 @@
       \end{adjustbox}
     }
 
+    \only<+>{
+      \vspace{-1.5em}
+      \begin{adjustbox}{max totalsize={1.0\textwidth}{.95\textheight}, center}
+        \input{fig/implementation_diagram_last.tex}
+      \end{adjustbox}
+    }
+
   \end{figure}
 
 \end{frame}
@@ -447,6 +478,21 @@
 
 \section{Linux technologies}
 \subsection{terminal, shell, TMUX, Vim, ROS}
+
+%%{ Software tools in our disposal
+\begin{frame}
+  \frametitle{Software tools at our disposal}
+
+  \begin{center}
+    ``Every smith needs a hammer'',
+  \end{center}
+
+  \begin{flushright}
+    unnamed researcher.
+  \end{flushright}
+
+\end{frame}
+%%}
 
 %%{ Linux terminal & shell
 
@@ -472,6 +518,22 @@
   \begin{block}{Tmux in the Linux terminal}
     \begin{figure}
       \includegraphics[width=0.9\textwidth]{./fig/tmux.png}
+    \end{figure}
+  \end{block}
+
+\end{frame}
+
+%%}
+
+%%{ Ranger
+
+\begin{frame}
+
+  \frametitle{Ranger -- terminal file manager}
+
+  \begin{block}{Ranger}
+    \begin{figure}
+      \includegraphics[width=0.9\textwidth]{./fig/ranger.png}
     \end{figure}
   \end{block}
 
@@ -509,28 +571,6 @@
 
 %%}
 
-%%{ ROS -- Robot Operating System
-
-\begin{frame}
-  \frametitle{ROS -- Robot Operating System}
-
-  \begin{itemize}
-    \item Middleware allowing communication between programs
-    \item Makes the transition from \emph{Matlab} to reality bearable
-    \item Supported by sensor manufacturers (lots of ROS drivers)
-    \item Integration through the terminal (important, works over ssh)
-    \item Handles the difficult stuff nobody that wants to program: time management, logging, recording onboard data, common visualization, parameter loading, static and dynamic transformations, etc.
-    \item integrates to robotic simulators: Gazebo, V-REP
-  \end{itemize}
-
-  \begin{figure}
-    \includegraphics[width=0.3\textwidth]{./fig/ros_logo.png}
-  \end{figure}
-
-\end{frame}
-
-%%}
-
 %% | ---------------------- The simulator --------------------- |
 
 \section{MRS simulation stack}
@@ -559,6 +599,19 @@
 \end{frame}
 %%}
 
+%%{ Show the live demo
+\begin{frame}
+  \frametitle{Show the live demo}
+
+  \begin{center}
+    \large Now is the time to show the Live demo.\\
+    \vspace{2em}
+    Message to future me: ``Good luck with that! ;-)''
+  \end{center}
+
+\end{frame}
+%%}
+
 %% | ------------------- Seminar assignments ------------------ |
 
 \section{Summer School seminar}
@@ -578,7 +631,7 @@
     \end{block}
 
     \column{0.48\textwidth} % Right column and width
-    \begin{block}{Multiple Traveling Salesman Problems with Neighborhoods}
+    \begin{block}{Multiple (Dubins) Traveling Salesman Problems (with Neighborhoods)}
       \begin{itemize}
         \item \unit{2}{m} neighborhood around each point
         \item each point's neighborhood has to be visited by any of the drones
@@ -653,6 +706,19 @@
   \begin{figure}
     \includegraphics[width=0.8\textwidth]{./fig/tsp_dubins_sampled.png}
   \end{figure}
+
+\end{frame}
+%%}
+
+%%{ Show the live demo
+\begin{frame}
+  \frametitle{Show the live demo}
+
+  \begin{center}
+    \large Now is the time to show the Live demo.\\
+    \vspace{2em}
+    Message to future me: ``How did the last one go? ;-)''
+  \end{center}
 
 \end{frame}
 %%}

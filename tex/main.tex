@@ -66,771 +66,898 @@
 
   \setbeamertemplate{section in toc}[square] % change the style of entries in the tableofcontents
   \setbeamertemplate{subsection in toc}[square] % change the style of entries in the tableofcontents
-}
+  }
 
-\usepackage{graphicx} % allows including images
-\usepackage{booktabs} % allows the use of \toprule, \midrule and \bottomrule in tables
-\usepackage{multimedia}
-\newcommand{\superfill}{\vskip0pt plus 1filll}
+  \usepackage{graphicx} % allows including images
+  \usepackage{booktabs} % allows the use of \toprule, \midrule and \bottomrule in tables
+  \usepackage{multimedia}
+  \newcommand{\superfill}{\vskip0pt plus 1filll}
 
-\usepackage{tikz}
-\usepackage{pgfplots}
-\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
-\usepackage{isotope}
-\usepackage{transparent} % typesetting units
-\usepackage{animate}
-\usepackage{adjustbox}
-\usepackage{subcaption}
-\usepackage{float}
-\usepackage{listings}
+  \usepackage{tikz}
+  \usepackage{pgfplots}
+  \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+  \usepackage{isotope}
+  \usepackage{transparent} % typesetting units
+  \usepackage{animate}
+  \usepackage{adjustbox}
+  \usepackage{subcaption}
+  \usepackage{float}
+  \usepackage{listings}
 
-% load tikz templates
-\include{tikz-templates_light}
+  \newcommand{\minus}{\scalebox{0.75}[1.0]{$-$}}
+  \newcommand{\plus}{\scalebox{0.8}[0.8]{$+$}}
 
-%%{ custom commands
+  % load tikz templates
+  \include{tikz-templates_light}
 
-\newcommand{\unit}[2]{$#1~\ensuremath{\mathrm{#2}}$}
-\newcommand{\strong}[1]{\textbf{#1}}
-\newcommand{\coord}[1]{\textbf{#1}}
-\newcommand{\norm}[1]{\left\lvert#1\right\rvert}
-\newcommand{\m}[1]{\ensuremath{\mathbf{#1}}}
-\newcommand{\edn}[1]{{\color{blue} \textbf{#1}}}
-\newcommand{\todo}[1]{\color{red}{#1}\color{black}}
+  %%{ custom commands
 
-%%}
+  \newcommand{\unit}[2]{$#1~\ensuremath{\mathrm{#2}}$}
+  \newcommand{\strong}[1]{\textbf{#1}}
+  \newcommand{\coord}[1]{\textbf{#1}}
+  \newcommand{\norm}[1]{\left\lvert#1\right\rvert}
+  \newcommand{\m}[1]{\ensuremath{\mathbf{#1}}}
+  \newcommand{\edn}[1]{{\color{blue} \textbf{#1}}}
+  \newcommand{\todo}[1]{\color{red}{#1}\color{black}}
 
-\logo{\pgfputat{\pgfxy(0,5)}{\pgfbox[right,base]{\includegraphics[height=0.8cm]{}}}}
-\newcommand{\nologo}{\setbeamertemplate{logo}{}}
+  %%}
 
-\usepackage{eso-pic}
-\newcommand\AtPagemyUpperLeft[1]{\AtPageLowerLeft{\put(\LenToUnit{0.66\paperwidth},\LenToUnit{0.904\paperheight}){#1}}}
-\AddToShipoutPictureFG{
-  \AtPagemyUpperLeft{{\includegraphics[height=0.85cm,keepaspectratio]{fig/logo_ctu_fee_mrs_blue.png}}}
-}
-% \newcommand{\AddToShipoutPictureFG}{\setbeamertemplate{logo}{}}
+  \logo{\pgfputat{\pgfxy(0,5)}{\pgfbox[right,base]{\includegraphics[height=0.8cm]{}}}}
+  \newcommand{\nologo}{\setbeamertemplate{logo}{}}
 
-%%}
+  \usepackage{eso-pic}
+  \newcommand\AtPagemyUpperLeft[1]{\AtPageLowerLeft{\put(\LenToUnit{0.66\paperwidth},\LenToUnit{0.904\paperheight}){#1}}}
+  \AddToShipoutPictureFG{
+    \AtPagemyUpperLeft{{\includegraphics[height=0.85cm,keepaspectratio]{fig/logo_ctu_fee_mrs_blue.png}}}
+  }
+  % \newcommand{\AddToShipoutPictureFG}{\setbeamertemplate{logo}{}}
 
-%%{ TITLE PAGE
+  %%}
 
-\title[]{Introduction to the Unmanned Aerial Platform in the MRS Lab \\ \small{From control theory to practical experiments}}
+  %%{ TITLE PAGE
 
-\author[Tomas Baca]{Tomas Baca$^1$, Robert Penicka$^1$, Vojtech Spurny$^1$}
-\institute[CTU in Prague]
-{
-  \\
-  \vspace{1em}
-  \begin{tiny}
-    $^1$Multi-Robot Systems group, Faculty of Electrical Engineering\\
-    Czech Technical University in Prague\\
-  \end{tiny}
-  \medskip
-  \textit{tomas.baca@fel.cvut.cz}
-}
-\date{}
+  \title[]{Introduction to the Unmanned Aerial Platform in the MRS Lab \\ \small{From control theory to practical experiments}}
 
-\titlegraphic{\includegraphics[width=5cm]{fig/logo_ctu_fee_mrs_blue.png}}
+  \author[Tomas Baca]{Tomas Baca$^1$, Petr Stibinger$^1$, Robert Penicka$^1$}
+  \institute[CTU in Prague]
+  {
+    \\
+    \vspace{1em}
+    \begin{tiny}
+      $^1$Multi-Robot Systems group, Faculty of Electrical Engineering\\
+      Czech Technical University in Prague\\
+    \end{tiny}
+    \medskip
+    \textit{tomas.baca@fel.cvut.cz}
+  }
+  \date{}
 
-\begin{document}
+  \titlegraphic{\includegraphics[width=5cm]{fig/logo_ctu_fee_mrs_blue.png}}
 
-\begin{frame}
-  \titlepage % Print the title page as the first slide
-\end{frame}
+  \begin{document}
 
-% % todo pix its placement on every page
-% \logo{%
-%   \makebox[1.0\textwidth]{%
-%     \hfill%
-%     \includegraphics[width=3.0cm, keepaspectratio]{fig/logo_ctu_fee_mrs_blue.png}\vspace{-200pt}
-%   }
-% }
+  \begin{frame}
+    \titlepage % Print the title page as the first slide
+  \end{frame}
 
-% \nologo
+  % % todo pix its placement on every page
+  % \logo{%
+  %   \makebox[1.0\textwidth]{%
+  %     \hfill%
+  %     \includegraphics[width=3.0cm, keepaspectratio]{fig/logo_ctu_fee_mrs_blue.png}\vspace{-200pt}
+  %   }
+  % }
 
-%%}
+  % \nologo
 
-%%{ TABLE OF CONTENTS
+  %%}
 
-\begin{frame}
-  \frametitle{Outline}
-  \tableofcontents
-\end{frame}
+  %%{ TABLE OF CONTENTS
 
-%%}
+  \begin{frame}
+    \frametitle{Outline}
+    \tableofcontents
+  \end{frame}
 
-%% --------------------------------------------------------------
-%% |                   a little bit of history                  |
-%% --------------------------------------------------------------
+  %%}
 
-%%{ A little bit of history
+  %% --------------------------------------------------------------
+  %% |                 UAV Experimentation in MRS                 |
+  %% --------------------------------------------------------------
 
-\section{A little bit of history}
+  %%{ UAV Experimentation in MRS
 
-\begin{frame}
-  \frametitle{A little bit of history}
+  \section{UAV Experimentation in MRS}
 
-  \only<+>{\begin{block}{$\approx$ 2012, designing custom PCBs for controllers}
+  \begin{frame}
+    \frametitle{UAV Experimentation in MRS --- 2012--2015}
+
+    \only<+>{\begin{block}{$\approx$ 2012, designing custom PCBs for controllers}
       \begin{figure}
         \centering
         \includegraphics[width=0.60\textwidth]{./fig/pcb1.jpg}
       \end{figure}
-  \end{block}}
+    \end{block}}
 
-  \only<+>{\begin{block}{$\approx$ 2014, Model Predictive Control on embedded hardware}
+    \only<+>{\begin{block}{$\approx$ 2014, Model Predictive Control on embedded hardware}
       \begin{figure}
         \centering
         \includegraphics[width=0.60\textwidth]{./fig/pcb2.jpg}
       \end{figure}
-  \end{block}}
+    \end{block}}
 
-  \only<+>{\begin{block}{$\approx$ 2014, Model Predictive Control on embedded hardware}
+    \only<+>{\begin{block}{$\approx$ 2014, Model Predictive Control on embedded hardware}
       \begin{figure}
         \centering
         \includegraphics[width=0.90\textwidth]{./fig/tricopter.jpg}
       \end{figure}
-  \end{block}}
+    \end{block}}
 
-  \only<+>{\begin{block}{Embedded Model Predictive Control}
+    \only<+>{\begin{block}{Embedded Model Predictive Control}
       \begin{center}
 
         \movie[autostart]{
           \includegraphics[width=0.8\textwidth]{./fig/embedded_mpc_thumbnail.jpg}
         }{../videos/embedded_mpc.mp4}\\
-        Video: \url{https://youtu.be/AXI_rkQRBaE}
+        Video: \url{http://youtu.be/AXI_rkQRBaE}
 
       \end{center}
-  \end{block}}
+    \end{block}}
 
-  \only<+>{\begin{block}{Embedded Model Predictive Control}
+    \only<+>{\begin{block}{Embedded Model Predictive Control}
       \begin{center}
         \movie[autostart]{
           \includegraphics[width=0.8\textwidth]{./fig/mmar_vojta_thumbnail.jpg}
         }{../videos/mmar_vojta.mp4}\\
-        Video: \url{https://youtu.be/9Bpm4J31CgE}
+        Video: \url{http://youtu.be/9Bpm4J31CgE}
       \end{center}
-  \end{block}}
+    \end{block}}
 
-\end{frame}
+  \end{frame}
 
-\begin{frame}
-  \frametitle{A little bit of history}
+  \begin{frame}
+    \frametitle{UAV Experimentation in MRS --- 2016--now}
 
-  \begin{itemize}
-    \onslide<1->{\item Custom and purpose-built hardware}
-    \onslide<2->{\item Embedded software}
-    \onslide<3->{\item Results: \\ Embedded MPC \cite{mmar_mpc}\\ Multi-robot publications: \cite{mmar_spurny}, \cite{auro}}
-    \onslide<4->{\item ...}
-    \onslide<5->{\item Not Scalable! Bottlenecks everywhere: Embedded programming \emph{sucks}, simulations are difficult, system is hard to maintain, connecting sensors and peripheries is limited...}
-    \onslide<6->{\item ... 2015}
-\end{itemize}
+    \begin{itemize}
+      \onslide<1->{\item Custom and purpose-built hardware}
+      \onslide<2->{\item Embedded software}
+      \onslide<3->{\item Results: \cite{baca2016embedded}, \cite{spurny2016complex}, \cite{saska2016auro}, \cite{chudoba2016exploration}}
+      \onslide<4->{\item {\color{red} Not Scalable! Bottlenecks everywhere: Embedded programming \emph{cumbersome}, simulating is difficult, system is hard-to-maintain, connecting sensors and peripheries is limited...}}
+    \end{itemize}
 
-\end{frame}
+  \end{frame}
 
-%%}
+  %%}
 
-%%{ Nowadays
-\begin{frame}
-  \frametitle{Nowadays -- the system structure}
+  %%{ Nowadays
+  \begin{frame}
+    \frametitle{Nowadays -- the system structure}
 
-  \begin{block}{A typical pipeline structure revolves around a Linux computer.}
+    \begin{block}{A typical pipeline structure revolves around a Linux computer.}
+      \begin{figure}
+        \includegraphics[width=1.0\textwidth]{./fig/components.png}
+      \end{figure}
+    \end{block}
+
+  \end{frame}
+  %%}
+
+  %%{ ROS -- Robot Operating System
+
+  \begin{frame}
+    \frametitle{ROS -- Robot Operating System}
+
+    \begin{itemize}
+      \item Middleware allowing communication between programs
+      \item Integrates with \texttt{C++}, Python, Bash and Zshell
+      \item Makes the transition from \emph{Matlab} to reality bearable
+      \item Supported by sensor manufacturers
+      \item Integration through the Linux terminal
+      \item Handles the difficult stuff that nobody wants to program: time and clock management, logging, recording onboard data, visualization and plotting, parameter loading, static and dynamic transformations, etc.
+      \item integrates to robotic simulators: Gazebo, Coppelia (V-REP)
+    \end{itemize}
+
     \begin{figure}
-      \includegraphics[width=1.0\textwidth]{./fig/components.png}
+      \includegraphics[width=0.3\textwidth]{./fig/ros_logo.jpg}
     \end{figure}
-  \end{block}
 
-\end{frame}
-%%}
+  \end{frame}
 
-%% --------------------------------------------------------------
-%% |                    UAV control pipeline                    |
-%% --------------------------------------------------------------
+  %%}
 
-\section{UAV Control pipeline}
-\subsection{control theory point of view}
+  %% | ------------ Control pipeline - implementation ----------- |
 
-%%{ UAV control pipepline
-\begin{frame}
-  \frametitle{Control -- theory PoV}
+  \section{UAV Control pipeline}
+  \subsection{Control -- math point of view}
 
-  \begin{figure}
-    \begin{adjustbox}{max totalsize={1.0\textwidth}{.85\textheight}, center}
-      \input{fig/pipeline_diagram.tex}
-    \end{adjustbox}
-  \end{figure}
+  %%{ UAV control pipepline
+  \begin{frame}
+    \frametitle{Control theory point of view}
 
-  \begin{block}{\cite{iros}}
-    Model Predictive Trajectory Tracking and Collision Avoidance for Reliable Outdoor Deployment of Unmanned Aerial Vehicles, IROS 2018.
-  \end{block}
+    \begin{figure}
+      \begin{adjustbox}{max totalsize={1.0\textwidth}{.85\textheight}, center}
+        \input{fig/tikz/pipeline_diagram.tex}
+      \end{adjustbox}
+    \end{figure}
 
-\end{frame}
-%%}
+    \begin{block}{\cite{baca2020mrs}}
+      The MRS UAV System: Pushing the Frontiers of Reproducible Research, Real-world Deployment, and Education with Autonomous Unmanned Aerial Vehicles, preprint arXiv:2008.08050, 2020
+    \end{block}
 
-\subsection{implementation point of view}
+  \end{frame}
+  %%}
 
-%%{ From theory to practical experiments
+  \subsection{Control -- implementation point of view}
 
-%%{ Kalman filter
+  %%{ From theory to practical experiments
 
-\begin{frame}
-  \frametitle{From theory to practical experiments}
+  %%{ Linear Kalman filter
 
-  \begin{columns}[c]
+  \begin{frame}
+    \frametitle{From theory to practical experiments}
 
-    \onslide<1->{\column{0.48\textwidth} % Left column and width
-      \begin{block}{Kalman Filter $\approx$ 10 lines in Matlab}
+    \begin{columns}[c]
+
+      \onslide<1->{\column{0.48\textwidth} % Left column and width
+      \begin{block}{Linear Kalman Filter $\approx$ 10 lines}
         \begin{adjustbox}{max totalsize={1.0\textwidth}{.85\textheight}, center}
-          \input{fig/kalman.tex}
+          \input{./fig/tikz/kalman.tex}
         \end{adjustbox}
-    \end{block}}
+      \end{block}}
 
-    \onslide<2>{\column{0.48\textwidth} % Right column and width
-      \begin{block}{Kalman Filter in practice}
+      \onslide<2>{\column{0.48\textwidth} % Right column and width
+      \begin{block}{Linear Kalman Filter in practice}
         \begin{itemize}
-          \item $\ge$ 1000 lines of code
+          \item $\ge$ 1000 lines of \texttt{C++} code
           \item Real-world fusion \& estimation\\
-            $\ge$ 5000 lines of code
-          \item see \texttt{uav\_core/mrs\_odometry}
+            $\ge$ 10 000 lines of \texttt{C++} code
         \end{itemize}
-    \end{block}}
+      \end{block}}
 
-  \end{columns}
+    \end{columns}
 
-\end{frame}
+  \end{frame}
 
-%%}
+  %%}
 
-%%{ Control
+  %%{ Control
 
-\begin{frame}
-  \frametitle{From theory to practical experiments}
+  \begin{frame}
+    \frametitle{From theory to practical experiments}
 
-  \begin{columns}[c]
+    \begin{columns}[c]
 
-    \column{0.48\textwidth} % Left column and width
-    \onslide<1->{\vspace{-1em}
-      \begin{block}{SO(3) controller $\approx$ 10 lines in Matlab}
+      \column{0.48\textwidth} % Left column and width
+      \onslide<1->{\vspace{-1em}
+      \begin{block}{Geometric tracking controller $\approx$ 10 lines}
         \vspace{-1em}
-        \scriptsize{
-          \begin{align*}
-            \mathbf{m} = &-k_r\mathbf{e}_r-k_\omega \mathbf{e}_\omega + \mathbf{\omega}\times \mathbf{j} \mathbf{\omega} - \hdots \numberthis\\
-                         &\hdots - \mathbf{j}\left(\hat{\mathbf{\omega}}\mathbf{r}^t\mathbf{r}_c\mathbf{\omega}_c-\mathbf{r}^t\mathbf{r}_c\dot{\mathbf{\omega}}_c\right)\\
-            f = &-(-k_x\mathbf{e}_r - k_{ib}\mathbf{r}\int\limits_0^tr(\tau)^t\mathbf{e}_rd\tau - \hdots \numberthis\\
-                &\hdots - k_{iw}\int\limits_0^t\mathbf{e}_rd\tau - k_v\mathbf{e}_v - mg\mathbf{e}_3 + m\ddot{\mathbf{x}}_d)\cdot \mathbf{r}\mathbf{e}_3,
-          \end{align*}
-        }
+        \tiny\begin{align}
+          \mathbf{f}_d &= \minus m_e\mathbf{k}_p\circ \mathbf{e}_p \minusm_e\mathbf{k}_v\circ \mathbf{e}_v \plus m_e\ddot{\mathbf{r}}_d \minusm_eg\mathbf{\hat{e}}_3 \minus \mathbf{d}_w\circ \left[\begin{smallmatrix}
+            1\\
+            1\\
+            0
+          \end{smallmatrix}\right] \minus \mathbf{d}_b\circ \left[\begin{smallmatrix}
+            1\\
+            1\\
+            0
+          \end{smallmatrix}\right],\nonumber\\
+          \mathbf{e}_R &= \frac{1}{2}\left(\mathbf{R}_d^\intercal\mathbf{R} - \mathbf{R}^\intercal\mathbf{R}_d\right),\nonumber\\
+          \bm{\omega}_d &= \minus \mathbf{k}_R\circ \mathbf{e}_R \plus \bm{\omega}_j \minus \bm{\omega}_c,\nonumber
+        \end{align}
         \vspace{-1em}
-    \end{block}}
+      \end{block}}
 
-    \onslide<2->{
-      \vspace{-0.5em}
-      \begin{block}{MPC tracker $\approx$ 20 lines in Matlab}
-        \vspace{-1em}
-        \scriptsize{
-          \begin{align*}
-                              & \min_{\mathbf{u}_{[t]}, \mathbf{x}_{[t]}} \label{eq:mpc_cost}\numberthis
-                              & & \mathrm{V}\left(\mathbf{x}, \mathbf{u}\right) = \frac{1}{2}\sum_{i=1}^{m-1}\left(\mathbf{e}^T_{[i]}\mathbf{Q}\mathbf{e}_{[i]} + \mathbf{u}^T_{[i]}\mathbf{P}\mathbf{u}_{[i]}\right)
+      \onslide<2->{
+        \vspace{-0.5em}
+        \begin{block}{MPC controller $\approx$ 100 lines}
+          \vspace{-1em}
+          \scriptsize{
+            \begin{align*}
+              & \min_{\mathbf{u}_{[1:n]}} \label{eq:mpc_cost}\nonumber
+              & \frac{1}{2}\sum_{i=1}^{n-1}\left(\mathbf{e}^\intercal_{[i]}\mathbf{Q}\mathbf{e}_{[i]}\right) + \mathbf{e}^\intercal_{[n]}\mathbf{S}\mathbf{e}_{[n]}
             \end{align*}\begin{align*}
-            \text{s.t.}~ \mathbf{x}_{[t+1]} &= \mathbf{A}\mathbf{x}_{[t]} + \mathbf{B}\mathbf{u}_{[t]}, &\forall t &\in \{0, \hdots, m-1\}\numberthis\label{eq:mpc_model}\\
-            \mathbf{x}_{[t]} &\leq \mathbf{x\_max}_{[t]}, &\forall t &\in \{1, \hdots, m\}\label{eq:mpc_max}\numberthis\\
-            \mathbf{x}_{[t]} &\geq \mathbf{x\_min}_{[t]}, &\forall t &\in \{1, \hdots, m\}\label{eq:mpc_min}\numberthis
-          \end{align*}
-        }
-        \vspace{-1em}
-    \end{block}}
+              \text{s.t.}~ \mathbf{x}_{m[i]} &= \mathbf{A}_m\mathbf{x}_{m[i-1]} \plus \mathbf{B}_m\mathbf{u}_{[i]}, &\forall i &\in \{1, \hdots, n\}\nonumber\label{eq:mpc_model}\\
+              \mathbf{x}_{m[i]} &\leq \mathbf{x}_{\mathrm{max}}, &\forall i &\in \{1, \hdots, n\}\label{eq:mpc_max}\nonumber\\
+              \mathbf{x}_{m[i]} &\geq \minus\mathbf{x}_{\mathrm{max}}, &\forall i &\in \{1, \hdots, n\}\label{eq:mpc_min}\nonumber \\
+              \mathbf{u}_{[i]} \minus \mathbf{u}_{[i\minus1]} &\leq \dot{\mathbf{u}}_{\mathrm{max}} \Delta t, &\forall i &\in \{2, \hdots, n\}\label{eq:mpc_slew_min}\nonumber\\
+              \mathbf{u}_{[i]} \minus \mathbf{u}_{[i\minus1]} &\geq \minus\dot{\mathbf{u}}_{\mathrm{max}} \Delta t, &\forall i &\in \{2, \hdots, n\}\label{eq:mpc_slew_max}\nonumber
+            \end{align*}
+            }
+            \vspace{-1em}
+        \end{block}}
 
-    \column{0.48\textwidth} % Right column and width
+        \column{0.48\textwidth} % Right column and width
 
-    \onslide<3>{\begin{block}{Control in practice}
+        \onslide<3>{\begin{block}{UAV Control in practice}
+          \begin{itemize}
+            \item $\ge$ 10 000 lines of \texttt{C++} code
+          \end{itemize}
+        \end{block}}
+
+    \end{columns}
+
+  \end{frame}
+
+  %%}
+
+  %%{ From theory to practical experiments
+  \begin{frame}
+    \frametitle{From theory to practical experiments}
+
+    \begin{columns}[c]
+
+      \column{0.70\textwidth} % Left column and width
+      \begin{block}{What needs to be solved outside of Matlab's sandbox?}
         \begin{itemize}
-          \item $\ge$ 10 000 lines of code
+          \item crashes are expensive, so don't crash
+          \item control references might not be feasible
+          \item sensors can get disconnected during the flight
+          \item takeoff and landing: \textbf{the most tricky part of the flight}
+          \item mass (thus the model) can change during the flight
+          \item controllers can be poorly tuned... handle instabilities
+          \item acceleration and speed depend on the available sensors
+          \item people are fallible, don't let them crash the drones
+          \item not all states of UAV are allowed, even though controllers can reach them (upside down)
         \end{itemize}
-    \end{block}}
+      \end{block}
 
-  \end{columns}
+      \column{0.28\textwidth} % Right column and width
+      \begin{block}{The failsafe core}
+        \texttt{if (goingToCrash())}\\
+        \texttt{~~~~dont();}
+      \end{block}
 
-\end{frame}
+    \end{columns}
 
-%%}
+  \end{frame}
+  %%}
 
-%%{ From theory to practical experiments
-\begin{frame}
-  \frametitle{From theory to practical experiments}
+  %%}
 
-  \begin{columns}[c]
+  %% | --------------------- MRS UAV system --------------------- |
 
-    \column{0.70\textwidth} % Left column and width
-    \begin{block}{What needs to be solved outside of Matlab's sandbox?}
-      \begin{itemize}
-        \item crashes are expensive, so don't crash
-        \item control references might not be feasible
-        \item sensors can get disconnected during the flight
-        \item takeoff and landing: \textbf{the most tricky part of the flight}
-        \item mass (thus the model) can change during the flight
-        \item controllers can be poorly tuned... handle instabilities
-        \item acceleration and speed depends on the available sensors
-        \item people are fallible, don't let them crash the drones
-        \item not all states of UAV are allowed, even though controllers can reach them (upside down)
-      \end{itemize}
-    \end{block}
+  \subsection{The MRS UAV System}
 
-    \column{0.28\textwidth} % Right column and width
-    \begin{block}{The failsafe core}
-      \texttt{if (goingToCrash())}\\
-      \texttt{~~~~dont();}
-    \end{block}
+  %%{ The MRS UAV System
+  \begin{frame}
+    \frametitle{The MRS UAV System}
 
-  \end{columns}
+    \begin{itemize}
+      \item Open-Source system for multirotor UAVs
+      \item complete onboard execution
+      \item outdoor/indoor/lab/real-world environment
+      \item emphasis on safety and autonomy during experiments
+      \item painless experiments from takeoff to landing
+      \item extensible and powerful simulation
+      \item relies on the PixHawk embedded flight controller
+      \item safe for development and testing of new controllers
+    \end{itemize}
 
-\end{frame}
-%%}
+  \end{frame}
+  %%}
 
-%%}
+  %%{ Control pipeline implementation
 
-%%{ ROS -- Robot Operating System
+  \begin{frame}
+    \centering
+    \begin{figure}
 
-\begin{frame}
-  \frametitle{ROS -- Robot Operating System}
+      \frametitle{Control -- implementation point of view}
 
-  \begin{itemize}
-    \item Middleware allowing communication between programs
-    \item Integrates with Cpp, Python, Bash and Zsh
-    \item Makes the transition from \emph{Matlab} to reality bearable
-    \item Supported by sensor manufacturers (lots of ROS drivers)
-    \item Integration through the terminal (important, works over ssh)
-    \item Handles the difficult stuff that nobody wants to program: time and clock management, logging, recording onboard data, basic visualization, parameter loading, static and dynamic transformations, etc.
-    \item integrates to robotic simulators: Gazebo, V-REP
-  \end{itemize}
-
-  \begin{figure}
-    \includegraphics[width=0.3\textwidth]{./fig/ros_logo.jpg}
-  \end{figure}
-
-\end{frame}
-
-%%}
-
-%%{ Control pipeline implementation
-\begin{frame}
-  \centering
-  \begin{figure}
-
-    \frametitle{Control -- implementation PoV}
-
-    \only<+>{
-      \vspace{-1.5em}
-      \begin{adjustbox}{max totalsize={1.0\textwidth}{.95\textheight}, center}
-        \input{fig/implementation_diagram.tex}
+      \begin{adjustbox}{max totalsize={1.0\textwidth}{.90\textheight}, center}
+        \input{./fig/tikz/implementation_diagram.tex}
       \end{adjustbox}
+
+    \end{figure}
+
+  \end{frame}
+
+  %%}
+
+  %%{ MRS UAV System --- Feedforward Trackers
+
+  \begin{frame}
+    \frametitle{MRS UAV System --- Feedforward Trackers}
+
+    \begin{itemize}
+      \item receive high-level references from a navigation software, those are generally
+        a single \textbf{position} \& \textbf{heading} reference,
+        a \textbf{trajectory}, consisting of several \textbf{position} \& \textbf{heading} references separated by a fixed time constant.
+      \item generate all-state and feasible reference for the controllers, which consists of
+        desired position, velocity, acceleration, heading, and heading rate
+      \item trackers are provided with a set of state constraints that should be satisfied at all times.
+      \item loaded as plugins to the \emph{ControlManager}
+    \end{itemize}
+
+    \begin{block}{Available trackers}
+      MPC tracker, Landoff tracker, Joy tracker, Speed tracker, \hdots
+    \end{block}
+
+    \begin{block}{\cite{baca2020mrs}}
+      \url{http://github.com/ctu-mrs/mrs_uav_trackers}
+    \end{block}
+
+  \end{frame}
+
+  %%}
+
+  %%{ MRS UAV System --- Feedback Controllers
+
+  \begin{frame}
+    \frametitle{MRS UAV System --- Feedback Controllers}
+
+    \begin{itemize}
+      \item receive a current UAV state estimate
+      \item receive the all-state reference from reference trackers
+      \item control the states of the UAV by outputting a desired angular rate (or desired orientation) and desired collective thrust
+      \item loaded as plugins to the \emph{ControlManager}
+    \end{itemize}
+
+    \begin{block}{Available controllers}
+      SE(3) controller, MPC controller, Emergency controller, Failsafe controller
+    \end{block}
+
+    \begin{block}{\cite{baca2020mrs}}
+      \url{http://github.com/ctu-mrs/mrs_uav_controllers}
+    \end{block}
+
+  \end{frame}
+
+  %%}
+
+  %%{ MRS UAV System --- Control Manager
+
+  \begin{frame}
+    \frametitle{MRS UAV System --- Control Manager}
+
+    \onslide<+>{\begin{itemize}
+      \item integrates the control and tracking part of the MRS UAV pipeline
+      \item dynamically loads \textbf{controllers} and \textbf{trackers} plugins
+      \item subscribes to the UAV state estimate and provides it to all loaded trackers and controllers
+      \item outputs the attitude rate command the Pixhawk flight controller
+      \item provides constraints for trackers through a common interface
+      \item allows in-mid-air switching of feedback controllers and reference trackers
+      \item provides an interface between to UAV and a user
+      \item \textbf{provides safety features}
+    \end{itemize}}
+
+    \onslide<+>{
+      \begin{block}{Safety features}
+        \begin{itemize}
+          \item emergency hover
+          \item emergency landing
+          \item feedforward failsafe landing
+        \end{itemize}
+      \end{block}
     }
 
-    \only<+>{
-      \frametitle{Control -- implementation PoV}
+    \begin{block}<1-2>{\cite{baca2020mrs}}
+      \url{http://github.com/ctu-mrs/mrs_uav_managers}
+    \end{block}
+
+  \end{frame}
+
+  %%}
+
+  %%{ MRS UAV System --- UAV Manager
+
+  \begin{frame}
+    \frametitle{MRS UAV System --- UAV Manager}
+
+
+    \begin{block}{\cite{baca2020mrs}}
+      \url{http://github.com/ctu-mrs/mrs_uav_managers}
+    \end{block}
+
+  \end{frame}
+
+  %%}
+
+  %%{ MRS UAV System --- Odometry
+
+  \begin{frame}
+    \frametitle{MRS UAV System --- Odometry}
+
+
+    \begin{block}{\cite{baca2020mrs}}
+      \url{http://github.com/ctu-mrs/mrs_uav_odometry}
+    \end{block}
+
+  \end{frame}
+
+  %%}
+
+  %%{ MRS UAV System --- Simulation
+
+  \begin{frame}
+    \frametitle{MRS UAV System --- Simulation}
+
+    \begin{block}{\cite{baca2020mrs}}
+      \url{http://github.com/ctu-mrs/mrs_simulation}
+    \end{block}
+
+  \end{frame}
+
+  %%}
+
+  %%{ MRS UAV System --- Example Packages
+
+  \begin{frame}
+    \frametitle{MRS UAV System --- Example ROS Packages}
+
+    \begin{block}{\cite{baca2020mrs}}
+      \url{http://github.com/ctu-mrs/example_ros_packages}
+    \end{block}
+
+  \end{frame}
+
+  %%}
+
+  %%{ Preprint paper
+  \begin{frame}
+    \frametitle{Preprint}
+
+    \begin{block}{The MRS UAV System paper preprint --- arXiv:2008.0805}
+      \begin{figure}
+        \includegraphics[width=0.7\textwidth]{./fig/mrs_uav_system_paper.png}
+      \end{figure}
+    \end{block}
+
+  \end{frame}
+  %%}
+
+  %% --------------------------------------------------------------
+  %% |                      Linux environment                     |
+  %% --------------------------------------------------------------
+
+  \section{Software tools at our disposal}
+  \subsection{terminal, shell, Tmux, Vim, ROS}
+
+  %%{ Linux terminal & shell
+
+  \begin{frame}
+    \frametitle{Linux terminal \& shell}
+
+    \begin{block}{A Linux terminal}
+      \begin{figure}
+        \includegraphics[width=0.9\textwidth]{./fig/terminal.png}
+      \end{figure}
+    \end{block}
+
+  \end{frame}
+
+  %%}
+
+  %%{ Tmux & Terminal multiplexer
+
+  \begin{frame}
+
+    \frametitle{Tmux -- Terminal multiplexer}
+
+    \begin{block}{Tmux in the Linux terminal}
+      \begin{figure}
+        \includegraphics[width=0.9\textwidth]{./fig/tmux.png}
+      \end{figure}
+    \end{block}
+
+  \end{frame}
+
+  %%}
+
+  %%{ Ranger
+
+  \begin{frame}
+
+    \frametitle{Ranger -- terminal file manager}
+
+    \begin{block}{Ranger}
+      \begin{figure}
+        \includegraphics[width=0.9\textwidth]{./fig/ranger.png}
+      \end{figure}
+    \end{block}
+
+  \end{frame}
+
+  %%}
+
+  %%{ Vim -- modal, modular, modern
+
+  \begin{frame}
+    \frametitle{Vim -- modal, modular, modern}
+
+    \begin{block}{Vim in (Tmux in (Linux Terminal)}
+      \begin{figure}
+        \includegraphics[width=0.9\textwidth]{./fig/vim.png}
+      \end{figure}
+    \end{block}
+
+  \end{frame}
+
+  %%}
+
+  %%{ Vim -- modal, modular, modern
+
+  \begin{frame}
+    \frametitle{Vim -- modal, modular, modern}
+
+    \begin{block}{Terminal in (Vim in (Tmux in (Linux Terminal))}
+      \begin{figure}
+        \includegraphics[width=0.8\textwidth]{./fig/terminal_in_vim.png}
+      \end{figure}
+    \end{block}
+
+  \end{frame}
+
+  %%}
+
+  %% | ---------------------- The simulator --------------------- |
+
+  \section{MRS simulation stack}
+
+  \subsection{Gazebo/ROS, spawn}
+
+  %%{ Gazebo/ROS simulator
+  \begin{frame}
+    \frametitle{Gazebo/ROS simulator}
+
+    \begin{figure}
+      \includegraphics[width=1.0\textwidth]{./fig/gazebo.png}
+    \end{figure}
+
+  \end{frame}
+  %%}
+
+  %%{ Spawning drones to the simulator
+  \begin{frame}
+    \frametitle{Spawning drones to the simulator}
+
+    \begin{figure}
+      \includegraphics[width=1.0\textwidth]{./fig/spawn.png}
+    \end{figure}
+
+  \end{frame}
+  %%}
+
+  %%{ Show the live demo
+  \begin{frame}
+    \frametitle{Show the live demo}
+
+    \begin{center}
+      \large Now is the time to show the Live demo.\\
+      \vspace{2em}
+      1st law of robotics: never give a robotic demo!
+    \end{center}
+
+  \end{frame}
+  %%}
+
+  %% | ------------------- Seminar assignments ------------------ |
+
+  \section{Summer School seminar}
+  \subsection{the MTSPN problem}
+  \subsection{running the planner, w/ and w/o ROS}
+
+  %%{ Seminars' assignemnt -- MTSPN
+
+  \begin{frame}
+    \frametitle{Seminars' assignment -- MTSPN}
+
+    \begin{columns}[c]
+
+      \column{0.48\textwidth} % Left column and width
+      \begin{block}{A sample map of points}
+        \includegraphics[width=1.0\textwidth]{./fig/tsp_points.png}
+      \end{block}
+
+      \column{0.48\textwidth} % Right column and width
+      \begin{block}{Multiple (Dubins) Traveling Salesman Problems (with Neighborhoods)}
+        \begin{itemize}
+          \item \unit{2}{m} neighborhood around each point
+          \item each point's neighborhood has to be visited by any of the drones
+          \item drones' min mutual distance: \unit{5}{m}
+          \item faster total time wins
+        \end{itemize}
+      \end{block}
+
+      \begin{block}{UAV's constraints}
+        \begin{itemize}
+          \item trajectory sampled at \unit{5}{Hz}
+          \item max. speed \unit{7}{m/s}
+          \item max. acceleration \unit{2.5}{m/s^2}
+          \item UAV's start = finish
+        \end{itemize}
+      \end{block}
+
+    \end{columns}
+
+  \end{frame}
+
+  %%}
+
+  %%{ An example solution
+  \begin{frame}
+    \frametitle{An example solution of MTSP}
+
+    \begin{figure}
+      \includegraphics[width=0.8\textwidth]{./fig/tsp_segments_center.png}
+    \end{figure}
+
+  \end{frame}
+  %%}
+
+  %%{ With neighborhoods
+  \begin{frame}
+    \frametitle{An example solution with neighborhoods}
+
+    \begin{figure}
+      \includegraphics[width=0.8\textwidth]{./fig/tsp_segments.png}
+    \end{figure}
+
+  \end{frame}
+  %%}
+
+  %%{ Sampled segments
+  \begin{frame}
+    \frametitle{Sampling segments for the UAV's tracker}
+
+    \begin{figure}
+      \includegraphics[width=0.8\textwidth]{./fig/tsp_segments_sampled.png}
+    \end{figure}
+
+  \end{frame}
+  %%}
+
+  %%{ With Dubins
+  \begin{frame}
+    \frametitle{Using the Dubins vehicle model}
+
+    \begin{figure}
+      \includegraphics[width=0.8\textwidth]{./fig/tsp_dubins.png}
+    \end{figure}
+
+  \end{frame}
+  %%}
+
+  %%{ Sampling the Dubins path
+  \begin{frame}
+    \frametitle{Sampling the path for the UAV's tracker}
+
+    \begin{figure}
+      \includegraphics[width=0.8\textwidth]{./fig/tsp_dubins_sampled.png}
+    \end{figure}
+
+  \end{frame}
+  %%}
+
+  %%{ Show the live demo
+  \begin{frame}
+    \frametitle{Show the live demo}
+
+    \begin{center}
+      \large Now is the time to show the Live demo.\\
+      \vspace{2em}
+      Message to future me: ``How did the last one go? ;-)''
+    \end{center}
+
+  \end{frame}
+  %%}
+
+  \subsection{running the simulation}
+
+  %%{ Plotting the trajectory in RVIZ
+
+  \begin{frame}
+    \frametitle{Plotting the trajectory in RVIZ}
+
+    \begin{figure}
+      \includegraphics[width=1.0\textwidth]{./fig/rviz_1.png}
+    \end{figure}
+
+  \end{frame}
+
+  %%}
+
+  %%{ Showing Results in RVIZ
+
+  \begin{frame}
+    \frametitle{Showing Results in RVIZ}
+
+    \begin{figure}
+      \includegraphics[width=1.0\textwidth]{./fig/rviz_2.png}
+    \end{figure}
+
+  \end{frame}
+
+  %%}
+
+  %% --------------------------------------------------------------
+  %% |                          Resources                         |
+  %% --------------------------------------------------------------
+
+  %%{ MRS wiki
+
+  \begin{frame}
+    \frametitle{MRS UAV System wiki}
+    \begin{figure}
       \vspace{-1em}
-      \begin{adjustbox}{max totalsize={0.95\textheight}{.65\textwidth}, angle=90}
-        \input{fig/implementation_diagram.tex}
-      \end{adjustbox}
-    }
-
-    \only<+>{
-      \vspace{-1.5em}
-      \begin{adjustbox}{max totalsize={1.0\textwidth}{.95\textheight}, center}
-        \input{fig/implementation_diagram.tex}
-      \end{adjustbox}
-    }
-
-    \only<+>{
-      \vspace{-1.5em}
-      \begin{adjustbox}{max totalsize={1.0\textwidth}{.95\textheight}, center}
-        \input{fig/implementation_diagram_odom.tex}
-      \end{adjustbox}
-    }
-
-    \only<+>{
-      \vspace{-1.5em}
-      \begin{adjustbox}{max totalsize={1.0\textwidth}{.95\textheight}, center}
-        \input{fig/implementation_diagram_control.tex}
-      \end{adjustbox}
-    }
-
-    \only<+>{
-      \vspace{-1.0em}
-      \begin{adjustbox}{max totalsize={1.0\textwidth}{.95\textheight}, center}
-        \input{fig/implementation_diagram_control_2.tex}
-      \end{adjustbox}
-    }
-
-    \only<+>{
-      \vspace{-1.0em}
-      \begin{adjustbox}{max totalsize={1.0\textwidth}{.95\textheight}, center}
-        \input{fig/implementation_diagram_control_3.tex}
-      \end{adjustbox}
-    }
-
-    \only<+>{
-      \vspace{-1.5em}
-      \begin{adjustbox}{max totalsize={1.0\textwidth}{.95\textheight}, center}
-        \input{fig/implementation_diagram.tex}
-      \end{adjustbox}
-    }
-
-    \only<+>{
-      \vspace{-1.5em}
-      \begin{adjustbox}{max totalsize={1.0\textwidth}{.95\textheight}, center}
-        \input{fig/implementation_diagram_last.tex}
-      \end{adjustbox}
-    }
-
-  \end{figure}
-
-\end{frame}
-%%}
-
-%% --------------------------------------------------------------
-%% |                      Linux environment                     |
-%% --------------------------------------------------------------
-
-\section{Linux technologies}
-\subsection{terminal, shell, TMUX, Vim, ROS}
-
-%%{ Software tools in our disposal
-\begin{frame}
-  \frametitle{Software tools at our disposal}
-
-  \begin{center}
-    ``Every smith needs a hammer'',
-  \end{center}
-
-  \begin{flushright}
-    unnamed researcher.
-  \end{flushright}
-
-\end{frame}
-%%}
-
-%%{ Linux terminal & shell
-
-\begin{frame}
-  \frametitle{Linux terminal \& shell}
-
-  \begin{block}{A Linux terminal}
-    \begin{figure}
-      \includegraphics[width=0.9\textwidth]{./fig/terminal.png}
+      \caption*{\url{http://ctu-mrs.github.io}}
+      \includegraphics[width=0.7\textwidth]{./fig/wiki.png}
     \end{figure}
-  \end{block}
 
-\end{frame}
+  \end{frame}
 
-%%}
+  %%}
 
-%%{ Tmux & Terminal multiplexer
+  %%{ MRS Cheat Sheet
 
-\begin{frame}
-
-  \frametitle{Tmux -- Terminal multiplexer}
-
-  \begin{block}{Tmux in the Linux terminal}
+  \begin{frame}
+    \frametitle{The MRS Cheat Sheet}
+    \vspace{-1.0em}
     \begin{figure}
-      \includegraphics[width=0.9\textwidth]{./fig/tmux.png}
+      \caption*{\url{http://github.com/ctu-mrs/mrs_cheatsheet}}
+      \vspace{-0.5em}
+      \includegraphics[width=0.8\textwidth]{./fig/mrs_cheatsheet.png}
     \end{figure}
-  \end{block}
 
-\end{frame}
+  \end{frame}
 
-%%}
+  %%}
 
-%%{ Ranger
+  %%{ Links
+  \begin{frame}
+    \frametitle{Links}
 
-\begin{frame}
+    \begin{tabular}{ll}
 
-  \frametitle{Ranger -- terminal file manager}
+      MRS UAV System & {\small \url{github.com/mrs_uav_system}}\\
+      MRS UAV System wiki                       & {\small \url{ctu-mrs.github.io}}\\
+      MRS cheat sheet                & {\small \url{github.com/ctu-mrs/mrs_cheatsheet}}\\
+      Summer School Seminar Task \#1 & {\small \url{github.com/ctu-mrs/uvdar_leader_follower}}\\
+      Summer School Seminar Task \#2 & {\small \url{github.com/ctu-mrs/mtsp_planning_task}}\\
+      This presentation              & {\small \url{github.com/ctu-mrs/summer_school_presentation}}\\
+      Tomas's Linux setup Repository & {\small \url{github.com/klaxalk/linux-setup}}\\
+    \end{tabular}
 
-  \begin{block}{Ranger}
-    \begin{figure}
-      \includegraphics[width=0.9\textwidth]{./fig/ranger.png}
-    \end{figure}
-  \end{block}
+  \end{frame}
+  %%}
 
-\end{frame}
+  %%{ REFERENCES
 
-%%}
+  \begin{frame}
+    \frametitle{References}
+    \tiny{
+      \begin{thebibliography}{99}
 
-%%{ Vim -- modal, modular, modern
+        \bibitem[Baca et al., 2016]{baca2016embedded} Baca, T and Loianno, G and Saska, M
+          \newblock Embedded Model Predictive Control of Unmanned Micro Aerial Vehicles
+          \newblock 2016 IEEE International Conference on Methods and Models in Automation in Robotics
 
-\begin{frame}
-  \frametitle{Vim -- modal, modular, modern}
+        \bibitem[Chudoba et al., 2016]{chudoba2016exploration} Chudoba, J and Kulish, M and Saska, M and Baca, T and Preucil, L
+          \newblock Exploration and Mapping Technique Suited for Visual-features Based Localization of MAVs
+          \newblock Journal of Intelligent Robotics Systems, 2016
 
-  \begin{block}{Vim in (Tmux in (Linux Terminal)}
-    \begin{figure}
-      \includegraphics[width=0.9\textwidth]{./fig/vim.png}
-    \end{figure}
-  \end{block}
 
-\end{frame}
+        \bibitem[Spurny et al., 2016]{spurny2016complex} Spurny, V and Baca, T and Saska, M
+          \newblock Complex manoeuvres of heterogeneous MAV-UGV formations using a model predictive control
+          \newblock 2016 IEEE International Conference on Methods and Models in Automation in Robotics
 
-%%}
+        \bibitem[Saska et al, 2016]{saska2016auro} Saska, M and Baca, T and Thomas, J and Chudoba, J and Preucil, L and Krajnik, T and Faigl, J and Loianno, G and Kumar, V
+          \newblock System for deployment of groups of unmanned micro aerial vehicles in GPS-denied environments using onboard visual relative localization
+          \newblock Autonomous Robots, 2016
 
-%%{ Vim -- modal, modular, modern
+        \bibitem[Baca et al., 2018]{baca2018model} Baca, T and Hert, D and Loianno, G and Saska, M and Kumar, V
+          \newblock Model Predictive Trajectory Tracking and Collision Avoidance for Reliable Outdoor Deployment of Unmanned Aerial Vehicles
+          \newblock 2018 IEEE/RSJ International Conference on Intelligent Robots and Systems
 
-\begin{frame}
-  \frametitle{Vim -- modal, modular, modern}
+        \bibitem[Baca et al., 2020, arXiv:2008.08050]{baca2020mrs} Baca, T and Petrlik, M and Vrba, M and Spurny, V and Penicka, R and Hert, D and Saska, M
+          \newblock The MRS UAV System: Pushing the Frontiers of Reproducible Research, Real-world Deployment, and Education with Autonomous Unmanned Aerial Vehicles
+          \newblock \url{http://arxiv.org/abs/2008.08050}
 
-  \begin{block}{Terminal in (Vim in (Tmux in (Linux Terminal))}
-    \begin{figure}
-      \includegraphics[width=0.8\textwidth]{./fig/terminal_in_vim.png}
-    \end{figure}
-  \end{block}
 
-\end{frame}
+      \end{thebibliography}
+    }
+  \end{frame}
 
-%%}
+  %%}
 
-%% | ---------------------- The simulator --------------------- |
-
-\section{MRS simulation stack}
-
-\subsection{Gazebo/ROS, spawn}
-
-%%{ Gazebo/ROS simulator
-\begin{frame}
-  \frametitle{Gazebo/ROS simulator}
-
-  \begin{figure}
-    \includegraphics[width=1.0\textwidth]{./fig/gazebo.png}
-  \end{figure}
-
-\end{frame}
-%%}
-
-%%{ Spawning drones to the simulator
-\begin{frame}
-  \frametitle{Spawning drones to the simulator}
-
-  \begin{figure}
-    \includegraphics[width=1.0\textwidth]{./fig/spawn.png}
-  \end{figure}
-
-\end{frame}
-%%}
-
-%%{ Show the live demo
-\begin{frame}
-  \frametitle{Show the live demo}
-
-  \begin{center}
-    \large Now is the time to show the Live demo.\\
-    \vspace{2em}
-    1st law of robotics: never give a robotic demo!
-  \end{center}
-
-\end{frame}
-%%}
-
-%% | ------------------- Seminar assignments ------------------ |
-
-\section{Summer School seminar}
-\subsection{the MTSPN problem}
-\subsection{running the planner, w/ and w/o ROS}
-
-%%{ Seminars' assignemnt -- MTSPN
-
-\begin{frame}
-  \frametitle{Seminars' assignment -- MTSPN}
-
-  \begin{columns}[c]
-
-    \column{0.48\textwidth} % Left column and width
-    \begin{block}{A sample map of points}
-      \includegraphics[width=1.0\textwidth]{./fig/tsp_points.png}
-    \end{block}
-
-    \column{0.48\textwidth} % Right column and width
-    \begin{block}{Multiple (Dubins) Traveling Salesman Problems (with Neighborhoods)}
-      \begin{itemize}
-        \item \unit{2}{m} neighborhood around each point
-        \item each point's neighborhood has to be visited by any of the drones
-        \item drones' min mutual distance: \unit{5}{m}
-        \item faster total time wins
-      \end{itemize}
-    \end{block}
-
-    \begin{block}{UAV's constraints}
-      \begin{itemize}
-        \item trajectory sampled at \unit{5}{Hz}
-        \item max. speed \unit{7}{m/s}
-        \item max. acceleration \unit{2.5}{m/s^2}
-        \item UAV's start = finish
-      \end{itemize}
-    \end{block}
-
-  \end{columns}
-
-\end{frame}
-
-%%}
-
-%%{ An example solution
-\begin{frame}
-  \frametitle{An example solution of MTSP}
-
-  \begin{figure}
-    \includegraphics[width=0.8\textwidth]{./fig/tsp_segments_center.png}
-  \end{figure}
-
-\end{frame}
-%%}
-
-%%{ With neighborhoods
-\begin{frame}
-  \frametitle{An example solution with neighborhoods}
-
-  \begin{figure}
-    \includegraphics[width=0.8\textwidth]{./fig/tsp_segments.png}
-  \end{figure}
-
-\end{frame}
-%%}
-
-%%{ Sampled segments
-\begin{frame}
-  \frametitle{Sampling segments for the UAV's tracker}
-
-  \begin{figure}
-    \includegraphics[width=0.8\textwidth]{./fig/tsp_segments_sampled.png}
-  \end{figure}
-
-\end{frame}
-%%}
-
-%%{ With Dubins
-\begin{frame}
-  \frametitle{Using the Dubins vehicle model}
-
-  \begin{figure}
-    \includegraphics[width=0.8\textwidth]{./fig/tsp_dubins.png}
-  \end{figure}
-
-\end{frame}
-%%}
-
-%%{ Sampling the Dubins path
-\begin{frame}
-  \frametitle{Sampling the path for the UAV's tracker}
-
-  \begin{figure}
-    \includegraphics[width=0.8\textwidth]{./fig/tsp_dubins_sampled.png}
-  \end{figure}
-
-\end{frame}
-%%}
-
-%%{ Show the live demo
-\begin{frame}
-  \frametitle{Show the live demo}
-
-  \begin{center}
-    \large Now is the time to show the Live demo.\\
-    \vspace{2em}
-    Message to future me: ``How did the last one go? ;-)''
-  \end{center}
-
-\end{frame}
-%%}
-
-\subsection{running the simulation}
-
-%%{ Plotting the trajectory in RVIZ
-\begin{frame}
-  \frametitle{Plotting the trajectory in RVIZ}
-
-  \begin{figure}
-    \includegraphics[width=1.0\textwidth]{./fig/rviz_1.png}
-  \end{figure}
-
-\end{frame}
-%%}
-
-%%{ Plotting the trajectory in RVIZ
-\begin{frame}
-  \frametitle{Showing Results in RVIZ}
-
-  \begin{figure}
-    \includegraphics[width=1.0\textwidth]{./fig/rviz_2.png}
-  \end{figure}
-
-\end{frame}
-%%}
-
-%% --------------------------------------------------------------
-%% |                          resources                         |
-%% --------------------------------------------------------------
-
-%%{ MRS wiki
-\begin{frame}
-  \frametitle{MRS wiki}
-  \begin{figure}
-    \vspace{-1em}
-    \caption*{\url{https://mrs.felk.cvut.cz/gitlab/uav/uav_core/wikis/home}}
-    \includegraphics[width=0.7\textwidth]{./fig/wiki.png}
-  \end{figure}
-
-\end{frame}
-%%}
-
-%%{ MRS Cheat Sheet
-\begin{frame}
-  \frametitle{MRS Cheat Sheet}
-  \vspace{-1em}
-  \begin{figure}
-    \caption*{\url{https://github.com/klaxalk/mrs-cheatsheet}}
-    \includegraphics[width=0.8\textwidth]{./fig/mrs_cheatsheet.png}
-  \end{figure}
-
-\end{frame}
-%%}
-
-%%{ Links
-\begin{frame}
-  \frametitle{Links}
-
-  \begin{itemize}
-    \item MRS wiki -- \\\url{https://mrs.felk.cvut.cz/gitlab/uav/uav_core/wikis/home}
-    \item MRS cheat sheet -- \\\url{https://github.com/klaxalk/mrs-cheatsheet}
-    \item Summer School Seminar Task -- \\\url{https://mrs.felk.cvut.cz/gitlab/summer-school/seminar_task}
-    \item This presentation -- \\\url{https://github.com/klaxalk/mrs-presentation}
-    \item Tomas's Linux setup Repository -- \\\url{https://github.com/klaxalk/linux-setup}
-
-  \end{itemize}
-
-\end{frame}
-%%}
-
-%%{ REFERENCES
-
-\begin{frame}
-  \frametitle{References}
-  \tiny{
-    \begin{thebibliography}{99}
-
-      \bibitem[Baca et al., 2016]{mmar_mpc} Baca, T and Loianno, G and Saska, M
-      \newblock Embedded Model Predictive Control of Unmanned Micro Aerial Vehicles
-      \newblock 2016 IEEE International Conference on Methods and Models in Automation
-
-      \bibitem[Spurny et al., 2016]{mmar_spurny} Spurny, V and Baca, T and Saska, M
-      \newblock Complex manoeuvres of heterogeneous MAV-UGV formations using a model predictive control
-      \newblock 2016 IEEE International Conference on Methods and Models in Automation
-
-      \bibitem[Saska et al, 2016]{auro} Saska, M and Baca, T and Thomas, J and Chudoba, J and Preucil, L and Krajnik, T and Faigl, J and Loianno, G and Kumar, V
-      \newblock System for deployment of groups of unmanned micro aerial vehicles in GPS-denied environments using onboard visual relative localization
-      \newblock Autonomous Robots, 2016
-
-      \bibitem[Baca et al., 2018]{iros} Baca, T and Hert, D and Loianno, G and Saska, M and Kumar, V
-      \newblock Model Predictive Trajectory Tracking and Collision Avoidance for Reliable Outdoor Deployment of Unmanned Aerial Vehicles
-      \newblock 2018 IEEE/RSJ International Conference on Intelligent Robots and Systems
-
-  \end{thebibliography}
-}
-\end{frame}
-
-%%}
-
-  \end{document}
+\end{document}

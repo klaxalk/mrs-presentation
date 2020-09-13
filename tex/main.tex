@@ -84,13 +84,7 @@
   \usepackage{float}
   \usepackage{listings}
 
-  \newcommand{\minus}{\scalebox{0.75}[1.0]{$-$}}
-  \newcommand{\plus}{\scalebox{0.8}[0.8]{$+$}}
-
-  % load tikz templates
-  \include{tikz-templates_light}
-
-  %%{ custom commands
+  %%{ custom macros
 
   \newcommand{\unit}[2]{$#1~\ensuremath{\mathrm{#2}}$}
   \newcommand{\strong}[1]{\textbf{#1}}
@@ -99,8 +93,12 @@
   \newcommand{\m}[1]{\ensuremath{\mathbf{#1}}}
   \newcommand{\edn}[1]{{\color{blue} \textbf{#1}}}
   \newcommand{\todo}[1]{\color{red}{#1}\color{black}}
+  \newcommand{\minus}{\scalebox{0.75}[1.0]{$-$}}
+  \newcommand{\plus}{\scalebox{0.8}[0.8]{$+$}}
 
   %%}
+
+  \input{./tikz-templates_light.tex}
 
   \logo{\pgfputat{\pgfxy(0,5)}{\pgfbox[right,base]{\includegraphics[height=0.8cm]{}}}}
   \newcommand{\nologo}{\setbeamertemplate{logo}{}}
@@ -108,7 +106,7 @@
   \usepackage{eso-pic}
   \newcommand\AtPagemyUpperLeft[1]{\AtPageLowerLeft{\put(\LenToUnit{0.66\paperwidth},\LenToUnit{0.904\paperheight}){#1}}}
   \AddToShipoutPictureFG{
-    \AtPagemyUpperLeft{{\includegraphics[height=0.85cm,keepaspectratio]{fig/logo_ctu_fee_mrs_blue.png}}}
+    \AtPagemyUpperLeft{{\includegraphics[height=0.85cm,keepaspectratio]{./fig/logo_ctu_fee_mrs_blue.png}}}
   }
   % \newcommand{\AddToShipoutPictureFG}{\setbeamertemplate{logo}{}}
 
@@ -132,7 +130,7 @@
   }
   \date{}
 
-  \titlegraphic{\includegraphics[width=5cm]{fig/logo_ctu_fee_mrs_blue.png}}
+  \titlegraphic{\includegraphics[width=5cm]{./fig/logo_ctu_fee_mrs_blue.png}}
 
   \begin{document}
 
@@ -144,7 +142,7 @@
   % \logo{%
   %   \makebox[1.0\textwidth]{%
   %     \hfill%
-  %     \includegraphics[width=3.0cm, keepaspectratio]{fig/logo_ctu_fee_mrs_blue.png}\vspace{-200pt}
+  %     \includegraphics[width=3.0cm, keepaspectratio]{./fig/logo_ctu_fee_mrs_blue.png}\vspace{-200pt}
   %   }
   % }
 
@@ -276,7 +274,7 @@
 
     \begin{figure}
       \begin{adjustbox}{max totalsize={1.0\textwidth}{.85\textheight}, center}
-        \input{fig/tikz/pipeline_diagram.tex}
+        \input{./fig/tikz/pipeline_diagram.tex}
       \end{adjustbox}
     \end{figure}
 

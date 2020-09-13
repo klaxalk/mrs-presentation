@@ -106,7 +106,7 @@
   \usepackage{eso-pic}
   \newcommand\AtPagemyUpperLeft[1]{\AtPageLowerLeft{\put(\LenToUnit{0.66\paperwidth},\LenToUnit{0.904\paperheight}){#1}}}
   \AddToShipoutPictureFG{
-    \AtPagemyUpperLeft{{\includegraphics[height=0.85cm,keepaspectratio]{./fig/logo_ctu_fee_mrs_blue.png}}}
+    \AtPagemyUpperLeft{{\includegraphics[height=0.85cm,keepaspectratio]{fig/logo_ctu_fee_mrs_blue.png}}}
   }
   % \newcommand{\AddToShipoutPictureFG}{\setbeamertemplate{logo}{}}
 
@@ -142,7 +142,7 @@
   % \logo{%
   %   \makebox[1.0\textwidth]{%
   %     \hfill%
-  %     \includegraphics[width=3.0cm, keepaspectratio]{./fig/logo_ctu_fee_mrs_blue.png}\vspace{-200pt}
+  %     \includegraphics[width=3.0cm, keepaspectratio]{fig/logo_ctu_fee_mrs_blue.png}\vspace{-200pt}
   %   }
   % }
 
@@ -173,21 +173,21 @@
     \only<+>{\begin{block}{$\approx$ 2012, designing custom PCBs for controllers}
       \begin{figure}
         \centering
-        \includegraphics[width=0.60\textwidth]{./fig/pcb1.jpg}
+        \includegraphics[width=0.60\textwidth]{fig/pcb1.jpg}
       \end{figure}
     \end{block}}
 
     \only<+>{\begin{block}{$\approx$ 2014, Model Predictive Control on embedded hardware}
       \begin{figure}
         \centering
-        \includegraphics[width=0.60\textwidth]{./fig/pcb2.jpg}
+        \includegraphics[width=0.60\textwidth]{fig/pcb2.jpg}
       \end{figure}
     \end{block}}
 
     \only<+>{\begin{block}{$\approx$ 2014, Model Predictive Control on embedded hardware}
       \begin{figure}
         \centering
-        \includegraphics[width=0.90\textwidth]{./fig/tricopter.jpg}
+        \includegraphics[width=0.90\textwidth]{fig/tricopter.jpg}
       \end{figure}
     \end{block}}
 
@@ -195,7 +195,7 @@
       \begin{center}
 
         \movie[autostart]{
-          \includegraphics[width=0.8\textwidth]{./fig/embedded_mpc_thumbnail.jpg}
+          \includegraphics[width=0.8\textwidth]{fig/embedded_mpc_thumbnail.jpg}
         }{../videos/embedded_mpc.mp4}\\
         Video: \url{http://youtu.be/AXI_rkQRBaE}
 
@@ -205,7 +205,7 @@
     \only<+>{\begin{block}{Embedded Model Predictive Control}
       \begin{center}
         \movie[autostart]{
-          \includegraphics[width=0.8\textwidth]{./fig/mmar_vojta_thumbnail.jpg}
+          \includegraphics[width=0.8\textwidth]{fig/mmar_vojta_thumbnail.jpg}
         }{../videos/mmar_vojta.mp4}\\
         Video: \url{http://youtu.be/9Bpm4J31CgE}
       \end{center}
@@ -233,7 +233,7 @@
 
     \begin{block}{A typical pipeline structure revolves around a Linux computer.}
       \begin{figure}
-        \includegraphics[width=1.0\textwidth]{./fig/components.png}
+        \includegraphics[width=1.0\textwidth]{fig/components.png}
       \end{figure}
     \end{block}
 
@@ -256,7 +256,7 @@
     \end{itemize}
 
     \begin{figure}
-      \includegraphics[width=0.3\textwidth]{./fig/ros_logo.jpg}
+      \includegraphics[width=0.3\textwidth]{fig/ros_logo.jpg}
     \end{figure}
 
   \end{frame}
@@ -274,7 +274,7 @@
 
     \begin{figure}
       \begin{adjustbox}{max totalsize={1.0\textwidth}{.85\textheight}, center}
-        \input{./fig/tikz/pipeline_diagram.tex}
+        \input{fig/tikz/pipeline_diagram.tex}
       \end{adjustbox}
     \end{figure}
 
@@ -299,7 +299,7 @@
       \onslide<1->{\column{0.48\textwidth} % Left column and width
       \begin{block}{Linear Kalman Filter $\approx$ 10 lines}
         \begin{adjustbox}{max totalsize={1.0\textwidth}{.85\textheight}, center}
-          \input{./fig/tikz/kalman.tex}
+          \input{fig/tikz/kalman.tex}
         \end{adjustbox}
       \end{block}}
 
@@ -443,7 +443,7 @@
       \frametitle{Control -- implementation point of view}
 
       \begin{adjustbox}{max totalsize={1.0\textwidth}{.90\textheight}, center}
-        \input{./fig/tikz/implementation_diagram.tex}
+        \input{fig/tikz/implementation_diagram.tex}
       \end{adjustbox}
 
     \end{figure}
@@ -597,7 +597,7 @@
 
     \begin{block}{The MRS UAV System paper preprint --- arXiv:2008.0805}
       \begin{figure}
-        \includegraphics[width=0.7\textwidth]{./fig/mrs_uav_system_paper.png}
+        \includegraphics[width=0.7\textwidth]{fig/mrs_uav_system_paper.png}
       \end{figure}
     \end{block}
 
@@ -618,7 +618,7 @@
 
     \begin{block}{A Linux terminal}
       \begin{figure}
-        \includegraphics[width=0.9\textwidth]{./fig/terminal.png}
+        \includegraphics[width=0.9\textwidth]{fig/terminal.png}
       \end{figure}
     \end{block}
 
@@ -634,7 +634,7 @@
 
     \begin{block}{Tmux in the Linux terminal}
       \begin{figure}
-        \includegraphics[width=0.9\textwidth]{./fig/tmux.png}
+        \includegraphics[width=0.9\textwidth]{fig/tmux.png}
       \end{figure}
     \end{block}
 
@@ -650,7 +650,7 @@
 
     \begin{block}{Ranger}
       \begin{figure}
-        \includegraphics[width=0.9\textwidth]{./fig/ranger.png}
+        \includegraphics[width=0.9\textwidth]{fig/ranger.png}
       \end{figure}
     \end{block}
 
@@ -665,7 +665,7 @@
 
     \begin{block}{Vim in (Tmux in (Linux Terminal)}
       \begin{figure}
-        \includegraphics[width=0.9\textwidth]{./fig/vim.png}
+        \includegraphics[width=0.9\textwidth]{fig/vim.png}
       \end{figure}
     \end{block}
 
@@ -680,7 +680,7 @@
 
     \begin{block}{Terminal in (Vim in (Tmux in (Linux Terminal))}
       \begin{figure}
-        \includegraphics[width=0.8\textwidth]{./fig/terminal_in_vim.png}
+        \includegraphics[width=0.8\textwidth]{fig/terminal_in_vim.png}
       \end{figure}
     \end{block}
 
@@ -699,7 +699,7 @@
     \frametitle{Gazebo/ROS simulator}
 
     \begin{figure}
-      \includegraphics[width=1.0\textwidth]{./fig/gazebo.png}
+      \includegraphics[width=1.0\textwidth]{fig/gazebo.png}
     \end{figure}
 
   \end{frame}
@@ -710,7 +710,7 @@
     \frametitle{Spawning drones to the simulator}
 
     \begin{figure}
-      \includegraphics[width=1.0\textwidth]{./fig/spawn.png}
+      \includegraphics[width=1.0\textwidth]{fig/spawn.png}
     \end{figure}
 
   \end{frame}
@@ -744,7 +744,7 @@
 
       \column{0.48\textwidth} % Left column and width
       \begin{block}{A sample map of points}
-        \includegraphics[width=1.0\textwidth]{./fig/tsp_points.png}
+        \includegraphics[width=1.0\textwidth]{fig/tsp_points.png}
       \end{block}
 
       \column{0.48\textwidth} % Right column and width
@@ -777,7 +777,7 @@
     \frametitle{An example solution of MTSP}
 
     \begin{figure}
-      \includegraphics[width=0.8\textwidth]{./fig/tsp_segments_center.png}
+      \includegraphics[width=0.8\textwidth]{fig/tsp_segments_center.png}
     \end{figure}
 
   \end{frame}
@@ -788,7 +788,7 @@
     \frametitle{An example solution with neighborhoods}
 
     \begin{figure}
-      \includegraphics[width=0.8\textwidth]{./fig/tsp_segments.png}
+      \includegraphics[width=0.8\textwidth]{fig/tsp_segments.png}
     \end{figure}
 
   \end{frame}
@@ -799,7 +799,7 @@
     \frametitle{Sampling segments for the UAV's tracker}
 
     \begin{figure}
-      \includegraphics[width=0.8\textwidth]{./fig/tsp_segments_sampled.png}
+      \includegraphics[width=0.8\textwidth]{fig/tsp_segments_sampled.png}
     \end{figure}
 
   \end{frame}
@@ -810,7 +810,7 @@
     \frametitle{Using the Dubins vehicle model}
 
     \begin{figure}
-      \includegraphics[width=0.8\textwidth]{./fig/tsp_dubins.png}
+      \includegraphics[width=0.8\textwidth]{fig/tsp_dubins.png}
     \end{figure}
 
   \end{frame}
@@ -821,7 +821,7 @@
     \frametitle{Sampling the path for the UAV's tracker}
 
     \begin{figure}
-      \includegraphics[width=0.8\textwidth]{./fig/tsp_dubins_sampled.png}
+      \includegraphics[width=0.8\textwidth]{fig/tsp_dubins_sampled.png}
     \end{figure}
 
   \end{frame}
@@ -848,7 +848,7 @@
     \frametitle{Plotting the trajectory in RVIZ}
 
     \begin{figure}
-      \includegraphics[width=1.0\textwidth]{./fig/rviz_1.png}
+      \includegraphics[width=1.0\textwidth]{fig/rviz_1.png}
     \end{figure}
 
   \end{frame}
@@ -861,7 +861,7 @@
     \frametitle{Showing Results in RVIZ}
 
     \begin{figure}
-      \includegraphics[width=1.0\textwidth]{./fig/rviz_2.png}
+      \includegraphics[width=1.0\textwidth]{fig/rviz_2.png}
     \end{figure}
 
   \end{frame}
@@ -879,7 +879,7 @@
     \begin{figure}
       \vspace{-1em}
       \caption*{\url{http://ctu-mrs.github.io}}
-      \includegraphics[width=0.7\textwidth]{./fig/wiki.png}
+      \includegraphics[width=0.7\textwidth]{fig/wiki.png}
     \end{figure}
 
   \end{frame}
@@ -894,7 +894,7 @@
     \begin{figure}
       \caption*{\url{http://github.com/ctu-mrs/mrs_cheatsheet}}
       \vspace{-0.5em}
-      \includegraphics[width=0.8\textwidth]{./fig/mrs_cheatsheet.png}
+      \includegraphics[width=0.8\textwidth]{fig/mrs_cheatsheet.png}
     \end{figure}
 
   \end{frame}

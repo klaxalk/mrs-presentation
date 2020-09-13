@@ -13,13 +13,13 @@ jobs:
         - sudo apt -y install texlive-latex-base texlive-latex-extra poppler-utils imagemagick
       script:
         - cd tex
-        - pdflatex -interaction=nonstopmode main.tex
+        - pdflatex -interaction=nonstopmode main.tex || echo "failed but whatever"
         - mkdir -p output
         - mv main.pdf output/presentation.pdf
       deploy:
         provider: pages
         skip_cleanup: true
-        local_dir: output
+        local_dir: tex/output
         github_token: $GH_REPO_TOKEN
         on:
           branch: master

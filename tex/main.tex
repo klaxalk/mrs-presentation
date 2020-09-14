@@ -73,6 +73,12 @@
   \usepackage{multimedia}
   \newcommand{\superfill}{\vskip0pt plus 1filll}
 
+  % math section
+  \usepackage{amsmath,amsfonts,amssymb,bm}
+  \usepackage{nicefrac}
+
+  \usepackage{siunitx}
+
   \usepackage{tikz}
   \usepackage{pgfplots}
   \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
@@ -100,7 +106,8 @@
 
   \input{./tikz-templates_light.tex}
 
-  \logo{\pgfputat{\pgfxy(0,5)}{\pgfbox[right,base]{\includegraphics[height=0.8cm]{}}}}
+  % \logo{\pgfputat{\pgfxy(0,5)}{\pgfbox[right,base]{\includegraphics[height=0.8cm]{}}}}
+  \logo{\pgfputat{\pgfxy(0,5)}{\pgfbox[right,base]{}}}
   \newcommand{\nologo}{\setbeamertemplate{logo}{}}
 
   \usepackage{eso-pic}
@@ -196,7 +203,7 @@
 
         \movie[autostart]{
           \includegraphics[width=0.8\textwidth]{fig/embedded_mpc_thumbnail.jpg}
-        }{../videos/embedded_mpc.mp4}\\
+        }{videos/embedded_mpc.mp4}\\
         Video: \url{http://youtu.be/AXI_rkQRBaE}
 
       \end{center}
@@ -206,7 +213,7 @@
       \begin{center}
         \movie[autostart]{
           \includegraphics[width=0.8\textwidth]{fig/mmar_vojta_thumbnail.jpg}
-        }{../videos/mmar_vojta.mp4}\\
+        }{videos/mmar_vojta.mp4}\\
         Video: \url{http://youtu.be/9Bpm4J31CgE}
       \end{center}
     \end{block}}
@@ -330,7 +337,7 @@
       \begin{block}{Geometric tracking controller $\approx$ 10 lines}
         \vspace{-1em}
         \tiny\begin{align}
-          \mathbf{f}_d &= \minus m_e\mathbf{k}_p\circ \mathbf{e}_p \minusm_e\mathbf{k}_v\circ \mathbf{e}_v \plus m_e\ddot{\mathbf{r}}_d \minusm_eg\mathbf{\hat{e}}_3 \minus \mathbf{d}_w\circ \left[\begin{smallmatrix}
+          \mathbf{f}_d &= \minus m_e\mathbf{k}_p\circ \mathbf{e}_p \minus m_e\mathbf{k}_v\circ \mathbf{e}_v \plus m_e\ddot{\mathbf{r}}_d \minus m_eg\mathbf{\hat{e}}_3 \minus \mathbf{d}_w\circ \left[\begin{smallmatrix}
             1\\
             1\\
             0
@@ -351,14 +358,14 @@
           \vspace{-1em}
           \scriptsize{
             \begin{align*}
-              & \min_{\mathbf{u}_{[1:n]}} \label{eq:mpc_cost}\nonumber
+              & \min_{\mathbf{u}_{[1:n]}}\nonumber
               & \frac{1}{2}\sum_{i=1}^{n-1}\left(\mathbf{e}^\intercal_{[i]}\mathbf{Q}\mathbf{e}_{[i]}\right) + \mathbf{e}^\intercal_{[n]}\mathbf{S}\mathbf{e}_{[n]}
             \end{align*}\begin{align*}
-              \text{s.t.}~ \mathbf{x}_{m[i]} &= \mathbf{A}_m\mathbf{x}_{m[i-1]} \plus \mathbf{B}_m\mathbf{u}_{[i]}, &\forall i &\in \{1, \hdots, n\}\nonumber\label{eq:mpc_model}\\
-              \mathbf{x}_{m[i]} &\leq \mathbf{x}_{\mathrm{max}}, &\forall i &\in \{1, \hdots, n\}\label{eq:mpc_max}\nonumber\\
-              \mathbf{x}_{m[i]} &\geq \minus\mathbf{x}_{\mathrm{max}}, &\forall i &\in \{1, \hdots, n\}\label{eq:mpc_min}\nonumber \\
-              \mathbf{u}_{[i]} \minus \mathbf{u}_{[i\minus1]} &\leq \dot{\mathbf{u}}_{\mathrm{max}} \Delta t, &\forall i &\in \{2, \hdots, n\}\label{eq:mpc_slew_min}\nonumber\\
-              \mathbf{u}_{[i]} \minus \mathbf{u}_{[i\minus1]} &\geq \minus\dot{\mathbf{u}}_{\mathrm{max}} \Delta t, &\forall i &\in \{2, \hdots, n\}\label{eq:mpc_slew_max}\nonumber
+              \text{s.t.}~ \mathbf{x}_{m[i]} &= \mathbf{A}_m\mathbf{x}_{m[i-1]} \plus \mathbf{B}_m\mathbf{u}_{[i]}, &\forall i &\in \{1, \hdots, n\}\nonumber\\
+              \mathbf{x}_{m[i]} &\leq \mathbf{x}_{\mathrm{max}}, &\forall i &\in \{1, \hdots, n\}\nonumber\\
+              \mathbf{x}_{m[i]} &\geq \minus \mathbf{x}_{\mathrm{max}}, &\forall i &\in \{1, \hdots, n\}\nonumber \\
+              \mathbf{u}_{[i]} \minus \mathbf{u}_{[i\minus 1]} &\leq \dot{\mathbf{u}}_{\mathrm{max}} \Delta t, &\forall i &\in \{2, \hdots, n\}\nonumber\\
+              \mathbf{u}_{[i]} \minus \mathbf{u}_{[i\minus 1]} &\geq \minus \dot{\mathbf{u}}_{\mathrm{max}} \Delta t, &\forall i &\in \{2, \hdots, n\}\nonumber
             \end{align*}
             }
             \vspace{-1em}
@@ -472,14 +479,14 @@
 
     \begin{itemize}
       \item receive high-level references from a navigation software --- a single \textbf{position} \& \textbf{heading} reference,
-        a \textbf{trajectory}, several \textbf{position} \& \textbf{heading} sampled with constant $\Deltat$
-      \item generate reference for controllers --- desired $\dot{x}, \ddot{x}, \dot{\ddot{x}}$, $\ddot{\ddot{x}}$, $\eta$, $\dot{\eta}$
+        a \textbf{trajectory}, several \textbf{position} \& \textbf{heading} sampled with constant $\Delta t$
+      \item generate reference for controllers --- desired $\dot{x}$, $\ddot{x}$, $\dot{\ddot{x}}$, $\ddot{\ddot{x}}$, $\eta$, $\dot{\eta}$
       \item are provided with a set of state constraints that should be satisfied at all times.
       \item loaded as plugins to the \emph{ControlManager}
     \end{itemize}
 
     \begin{block}{Available trackers}
-      MPC tracker, Landoff tracker, Joy tracker, Speed tracker, \hdots
+      MPC tracker, Landoff tracker, Joy tracker, Speed tracker, $\hdots$
     \end{block}
 
     \begin{block}{\cite{baca2020mrs}}
@@ -718,7 +725,7 @@
   
     \begin{block}{Real world UAV grasping a brick}
       \begin{center}
-        \movie[autostart,loop,start=86]{
+        \movie[autostart,loop]{
           \includegraphics[width=0.9\textwidth]{./videos/brick_grasping_mbzirc_thumbnail.jpg}
         }{./videos/brick_grasping_mbzirc.mp4}\\
       \end{center}
@@ -853,19 +860,6 @@
   \end{frame}
   %%}
 
-  %%{ Show the live demo
-  \begin{frame}
-    \frametitle{Show the live demo}
-
-    \begin{center}
-      \large Now is the time to show the Live demo.\\
-      \vspace{2em}
-      1st law of robotics: never give a robotic demo!
-    \end{center}
-
-  \end{frame}
-  %%}
-
   %% | ------------------- Seminar assignments ------------------ |
 
   \section{Summer School seminar}
@@ -960,19 +954,6 @@
     \begin{figure}
       \includegraphics[width=0.8\textwidth]{fig/tsp_dubins_sampled.png}
     \end{figure}
-
-  \end{frame}
-  %%}
-
-  %%{ Show the live demo
-  \begin{frame}
-    \frametitle{Show the live demo}
-
-    \begin{center}
-      \large Now is the time to show the Live demo.\\
-      \vspace{2em}
-      Message to future me: ``How did the last one go? ;-)''
-    \end{center}
 
   \end{frame}
   %%}

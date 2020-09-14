@@ -246,12 +246,12 @@
     \frametitle{ROS -- Robot Operating System}
 
     \begin{itemize}
-      \item Middleware allowing communication between programs
-      \item Integrates with \texttt{C++}, Python, Bash and Zshell
-      \item Makes the transition from \emph{Matlab} to reality bearable
-      \item Supported by sensor manufacturers
-      \item Integration through the Linux terminal
-      \item Handles the difficult stuff that nobody wants to program: time and clock management, logging, recording onboard data, visualization and plotting, parameter loading, static and dynamic transformations, etc.
+      \item middleware allowing communication between programs
+      \item integrates with \texttt{C++}, Python, Bash and Zshell
+      \item makes the transition from \emph{Matlab} to reality bearable
+      \item supported by sensor manufacturers
+      \item integration through the Linux terminal
+      \item out of the box: time and clock management, logging, recording onboard data, visualization and plotting, parameter loading, static and dynamic transformations, etc.
       \item integrates to robotic simulators: Gazebo, Coppelia (V-REP)
     \end{itemize}
 
@@ -420,8 +420,15 @@
   \begin{frame}
     \frametitle{The MRS UAV System}
 
+    \vspace{-0.33em}
+
+    \includegraphics[width=1.0\textwidth]{./fig/drone_collage.jpg}
+
+    \vspace{-0.6em}
+
     \begin{itemize}
-      \item Open-Source system for multirotor UAVs
+      \item open-source system for multirotor UAVs
+      \item \emph{relatively} smooth transition from simulations to real world
       \item complete onboard execution
       \item outdoor/indoor/lab/real-world environment
       \item emphasis on safety and autonomy during experiments
@@ -457,13 +464,17 @@
   \begin{frame}
     \frametitle{MRS UAV System --- Feedforward Trackers}
 
+    \vspace{-0.33em}
+
+    \includegraphics[width=1.0\textwidth]{./fig/thumbnail_trackers.jpg}
+
+    \vspace{-0.6em}
+
     \begin{itemize}
-      \item receive high-level references from a navigation software, those are generally
-        a single \textbf{position} \& \textbf{heading} reference,
-        a \textbf{trajectory}, consisting of several \textbf{position} \& \textbf{heading} references separated by a fixed time constant.
-      \item generate all-state and feasible reference for the controllers, which consists of
-        desired position, velocity, acceleration, heading, and heading rate
-      \item trackers are provided with a set of state constraints that should be satisfied at all times.
+      \item receive high-level references from a navigation software --- a single \textbf{position} \& \textbf{heading} reference,
+        a \textbf{trajectory}, several \textbf{position} \& \textbf{heading} sampled with constant $\Deltat$
+      \item generate reference for controllers --- desired $\dot{x}, \ddot{x}, \dot{\ddot{x}}$, $\ddot{\ddot{x}}$, $\eta$, $\dot{\eta}$
+      \item are provided with a set of state constraints that should be satisfied at all times.
       \item loaded as plugins to the \emph{ControlManager}
     \end{itemize}
 
@@ -483,6 +494,12 @@
 
   \begin{frame}
     \frametitle{MRS UAV System --- Feedback Controllers}
+
+    \vspace{-0.33em}
+
+    \includegraphics[width=1.0\textwidth]{./fig/thumbnail_controllers.jpg}
+
+    \vspace{-0.6em}
 
     \begin{itemize}
       \item receive a current UAV state estimate
@@ -508,7 +525,7 @@
   \begin{frame}
     \frametitle{MRS UAV System --- Control Manager}
 
-    \onslide<+>{\begin{itemize}
+    \onslide<1>{\begin{itemize}
       \item integrates the control and tracking part of the MRS UAV pipeline
       \item dynamically loads \textbf{controllers} and \textbf{trackers} plugins
       \item subscribes to the UAV state estimate and provides it to all loaded trackers and controllers
@@ -519,8 +536,8 @@
       \item \textbf{provides safety features}
     \end{itemize}}
 
-    \onslide<+>{
-      \begin{block}{Safety features}
+    \onslide<1>{
+      \begin{block}{Safety features --- automatically triggered}
         \begin{itemize}
           \item emergency hover
           \item emergency landing
@@ -529,7 +546,7 @@
       \end{block}
     }
 
-    \begin{block}<1-2>{\cite{baca2020mrs}}
+    \begin{block}<1>{\cite{baca2020mrs}}
       \url{http://github.com/ctu-mrs/mrs_uav_managers}
     \end{block}
 
@@ -542,6 +559,15 @@
   \begin{frame}
     \frametitle{MRS UAV System --- UAV Manager}
 
+    \onslide<1>{\begin{itemize}
+      \item high-level non-essential routines
+      \item takeoff state machine
+      \item landing state machine
+      \item return to home state machine
+      \item flight timer
+      \item max thrust checking
+      \item max height checking
+    \end{itemize}}
 
     \begin{block}{\cite{baca2020mrs}}
       \url{http://github.com/ctu-mrs/mrs_uav_managers}
@@ -556,9 +582,70 @@
   \begin{frame}
     \frametitle{MRS UAV System --- Odometry}
 
+    \vspace{-0.33em}
+
+    \includegraphics[width=1.0\textwidth]{./fig/thumbnail_odometry.jpg}
+
+    \vspace{-0.6em}
+
+    \begin{itemize}
+      \item fusion of available sensors  
+      \item estimation of UAV translational states
+      \item bank of estimators
+      \item allows switching estimators in mid-flight
+      \item automatically switches when state estimator becomes unreliable
+    \end{itemize}
+
+    \begin{block}{Available estimators}
+      Optic flow, optic flow \& GPS, GPS, RTK GPS, VIO, Visual Servoing, 2D SLAM, 3D SLAM, Visual SLAM, Visual Servoing \& optic flow, 2D ICP
+    \end{block}
 
     \begin{block}{\cite{baca2020mrs}}
       \url{http://github.com/ctu-mrs/mrs_uav_odometry}
+    \end{block}
+
+  \end{frame}
+
+  %%}
+
+  %%{ Constraint \& Gain managers
+
+  \begin{frame}
+    \frametitle{Constraint \& Gain managers}
+
+    \onslide<1>{\begin{itemize}
+      \item dynamics constraint \& gain scheduling
+      \item automatically switches with every switch of a state estimator
+    \end{itemize}}
+
+    \begin{columns}[c]
+    
+    \column{0.55\textwidth} % Left column and width
+
+    \begin{block}{Dynamics constraints}
+      \begin{itemize}
+        \item horizontal: speed, acceleration, jerk, snap    
+        \item vertical ascending: speed, acceleration, jerk, snap    
+        \item vertical descending speed, acceleration, jerk, snap    
+        \item heading: speed, acceleration, jerk, snap
+        \item attitude rate: roll, pitch, yaw rate
+        \item attitude: max tilt
+      \end{itemize}
+    \end{block}
+    
+    \column{0.40\textwidth} % Right column and width
+    \begin{block}{SE(3) controller gains}
+      \begin{itemize}
+        \item translation: position and velocity feedback
+        \item rotation: attitude feedback
+        \item mass estimator
+        \item body \& world disturbance estimators
+      \end{itemize}
+    \end{block}
+    \end{columns}
+
+    \begin{block}{\cite{baca2020mrs}}
+      \url{http://github.com/ctu-mrs/mrs_uav_managers}
     \end{block}
 
   \end{frame}
@@ -570,23 +657,73 @@
   \begin{frame}
     \frametitle{MRS UAV System --- Simulation}
 
+    \vspace{-0.33em}
+
+    \includegraphics[width=1.0\textwidth]{./fig/thumbnail_simulation.jpg}
+
+    \vspace{-0.3em}
+
+    \begin{itemize}
+      \item 3 UAV types: DJI f450, DJI f550, Tarot 650
+    \end{itemize}
+
+    \begin{columns}[c]
+    
+    \column{0.60\textwidth} % Left column and width
+    
+    \begin{block}{Available sensors}
+      \begin{itemize}
+        \item RGB camera: MatrixVision Bluefox, mobius
+        \item Stereo Cameras: Intel Realsense
+        \item 1D LiDARs: Terabee Teraranger, Gamin Lite
+        \item 2D LiDARs: Scanse Sweep, Garmin RPLidar
+        \item 3D LiDARs: Velodyne Puck, Ouster
+        \item Thermal cameras, UV cameras for UVDAR
+      \end{itemize}  
+    \end{block}
+    
+    \column{0.35\textwidth} % Right column and width
+    
+    \begin{block}{Available actuation}
+      \begin{itemize}
+        \item magnetic gripper 
+        \item parachute
+        \item water gun
+      \end{itemize}
+    \end{block}
+    
+    \end{columns}
+
     \begin{block}{\cite{baca2020mrs}}
       \url{http://github.com/ctu-mrs/mrs_simulation}
     \end{block}
 
   \end{frame}
 
-  %%}
-
-  %%{ MRS UAV System --- Example Packages
+  \begin{frame}
+    \frametitle{MRS UAV System --- Simulation}
+  
+    \begin{block}{Realistic simulations of UAV grasping a brick}
+      \begin{center}
+        \movie[autostart,loop]{
+          \includegraphics[width=0.9\textwidth]{./videos/brick_grasping_simulated_thumbnail.jpg}
+        }{./videos/brick_grasping_simulated.mp4}\\
+      \end{center}
+    \end{block} 
+  
+  \end{frame}
 
   \begin{frame}
-    \frametitle{MRS UAV System --- Example ROS Packages}
-
-    \begin{block}{\cite{baca2020mrs}}
-      \url{http://github.com/ctu-mrs/example_ros_packages}
-    \end{block}
-
+    \frametitle{MRS UAV System --- Real world}
+  
+    \begin{block}{Real world UAV grasping a brick}
+      \begin{center}
+        \movie[autostart,loop,start=86]{
+          \includegraphics[width=0.9\textwidth]{./videos/brick_grasping_mbzirc_thumbnail.jpg}
+        }{./videos/brick_grasping_mbzirc.mp4}\\
+      \end{center}
+    \end{block} 
+  
   \end{frame}
 
   %%}

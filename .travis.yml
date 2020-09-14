@@ -12,7 +12,6 @@ jobs:
         - sudo apt -y update
         - sudo apt -y install texlive-latex-base texlive-latex-extra poppler-utils imagemagick
       script:
-        - cd tex
         - pdflatex -interaction=nonstopmode main.tex || echo "failed but whatever"
         - pdflatex -interaction=nonstopmode main.tex || echo "failed but whatever"
         - pdflatex -interaction=nonstopmode main.tex || echo "failed but whatever"
@@ -21,7 +20,7 @@ jobs:
       deploy:
         provider: pages
         skip_cleanup: true
-        local_dir: tex/output
+        local_dir: output
         github_token: $GH_REPO_TOKEN
         on:
           branch: master

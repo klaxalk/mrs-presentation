@@ -1,5 +1,7 @@
 tex/main.pdf
 *.swp
+*.swp
+build/
 
 ## Core latex/pdflatex auxiliary files:
 *.aux

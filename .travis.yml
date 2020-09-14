@@ -16,7 +16,7 @@ jobs:
         - pdflatex -interaction=nonstopmode main.tex || echo "failed but whatever"
         - pdflatex -interaction=nonstopmode main.tex || echo "failed but whatever"
         - mkdir -p output
-        - mv main.pdf output/presentation.pdf
+        - mv main.pdf output/main.pdf
       deploy:
         provider: pages
         skip_cleanup: true

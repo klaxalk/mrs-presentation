@@ -224,10 +224,10 @@
     \frametitle{UAV Experimentation in MRS --- 2016--now}
 
     \begin{itemize}
-      \onslide<1->{\item Custom and purpose-built hardware}
-      \onslide<2->{\item Embedded software}
-      \onslide<3->{\item Results: \cite{baca2016embedded}, \cite{spurny2016complex}, \cite{saska2016auro}, \cite{chudoba2016exploration}}
-      \onslide<4->{\item {\color{red} Not Scalable! Bottlenecks everywhere: Embedded programming \emph{cumbersome}, simulating is difficult, system is hard-to-maintain, connecting sensors and peripheries is limited...}}
+      \item Custom and purpose-built hardware
+      \item Embedded software
+      \item Results: \cite{baca2016embedded}, \cite{spurny2016complex}, \cite{saska2016auro}, \cite{chudoba2016exploration}
+      \item {\color{red} Not Scalable! Bottlenecks everywhere: Embedded programming \emph{cumbersome}, simulating is difficult, system is hard-to-maintain, connecting sensors and peripheries is limited...}
     \end{itemize}
 
   \end{frame}
@@ -596,7 +596,7 @@
     \vspace{-0.6em}
 
     \begin{itemize}
-      \item fusion of available sensors  
+      \item fusion of available sensors
       \item estimation of UAV translational states
       \item bank of estimators
       \item allows switching estimators in mid-flight
@@ -626,29 +626,29 @@
     \end{itemize}}
 
     \begin{columns}[c]
-    
-    \column{0.55\textwidth} % Left column and width
 
-    \begin{block}{Dynamics constraints}
-      \begin{itemize}
-        \item horizontal: speed, acceleration, jerk, snap    
-        \item vertical ascending: speed, acceleration, jerk, snap    
-        \item vertical descending speed, acceleration, jerk, snap    
-        \item heading: speed, acceleration, jerk, snap
-        \item attitude rate: roll, pitch, yaw rate
-        \item attitude: max tilt
-      \end{itemize}
-    \end{block}
-    
-    \column{0.40\textwidth} % Right column and width
-    \begin{block}{SE(3) controller gains}
-      \begin{itemize}
-        \item translation: position and velocity feedback
-        \item rotation: attitude feedback
-        \item mass estimator
-        \item body \& world disturbance estimators
-      \end{itemize}
-    \end{block}
+      \column{0.55\textwidth} % Left column and width
+
+      \begin{block}{Dynamics constraints}
+        \begin{itemize}
+          \item horizontal: speed, acceleration, jerk, snap
+          \item vertical ascending: speed, acceleration, jerk, snap
+          \item vertical descending speed, acceleration, jerk, snap
+          \item heading: speed, acceleration, jerk, snap
+          \item attitude rate: roll, pitch, yaw rate
+          \item attitude: max tilt
+        \end{itemize}
+      \end{block}
+
+      \column{0.40\textwidth} % Right column and width
+      \begin{block}{SE(3) controller gains}
+        \begin{itemize}
+          \item translation: position and velocity feedback
+          \item rotation: attitude feedback
+          \item mass estimator
+          \item body \& world disturbance estimators
+        \end{itemize}
+      \end{block}
     \end{columns}
 
     \begin{block}{\cite{baca2020mrs}}
@@ -675,30 +675,30 @@
     \end{itemize}
 
     \begin{columns}[c]
-    
-    \column{0.60\textwidth} % Left column and width
-    
-    \begin{block}{Available sensors}
-      \begin{itemize}
-        \item RGB camera: MatrixVision Bluefox, mobius
-        \item Stereo Cameras: Intel Realsense
-        \item 1D LiDARs: Terabee Teraranger, Gamin Lite
-        \item 2D LiDARs: Scanse Sweep, Garmin RPLidar
-        \item 3D LiDARs: Velodyne Puck, Ouster
-        \item Thermal cameras, UV cameras for UVDAR
-      \end{itemize}  
-    \end{block}
-    
-    \column{0.35\textwidth} % Right column and width
-    
-    \begin{block}{Available actuation}
-      \begin{itemize}
-        \item magnetic gripper 
-        \item parachute
-        \item water gun
-      \end{itemize}
-    \end{block}
-    
+
+      \column{0.60\textwidth} % Left column and width
+
+      \begin{block}{Available sensors}
+        \begin{itemize}
+          \item RGB camera: MatrixVision Bluefox, mobius
+          \item Stereo Cameras: Intel Realsense
+          \item 1D LiDARs: Terabee Teraranger, Gamin Lite
+          \item 2D LiDARs: Scanse Sweep, Garmin RPLidar
+          \item 3D LiDARs: Velodyne Puck, Ouster
+          \item Thermal cameras, UV cameras for UVDAR
+        \end{itemize}
+      \end{block}
+
+      \column{0.35\textwidth} % Right column and width
+
+      \begin{block}{Available actuation}
+        \begin{itemize}
+          \item magnetic gripper
+          \item parachute
+          \item water gun
+        \end{itemize}
+      \end{block}
+
     \end{columns}
 
     \begin{block}{\cite{baca2020mrs}}
@@ -709,28 +709,28 @@
 
   \begin{frame}
     \frametitle{MRS UAV System --- Simulation}
-  
+
     \begin{block}{Realistic simulations of UAV grasping a brick}
       \begin{center}
         \movie[autostart,loop]{
           \includegraphics[width=0.9\textwidth]{./videos/brick_grasping_simulated_thumbnail.jpg}
         }{./videos/brick_grasping_simulated.mp4}\\
       \end{center}
-    \end{block} 
-  
+    \end{block}
+
   \end{frame}
 
   \begin{frame}
     \frametitle{MRS UAV System --- Real world}
-  
+
     \begin{block}{Real world UAV grasping a brick}
       \begin{center}
         \movie[autostart,loop]{
           \includegraphics[width=0.9\textwidth]{./videos/brick_grasping_mbzirc_thumbnail.jpg}
         }{./videos/brick_grasping_mbzirc.mp4}\\
       \end{center}
-    \end{block} 
-  
+    \end{block}
+
   \end{frame}
 
   %%}
@@ -866,10 +866,32 @@
   \subsection{the MTSPN problem}
   \subsection{running the planner, w/ and w/o ROS}
 
-  %%{ Seminars' assignemnt -- MTSPN
+  %%{ Seminar assignemnt #1 -- Leader-Follower
 
   \begin{frame}
-    \frametitle{Seminars' assignment -- MTSPN}
+    \frametitle{Seminar assignment \#1 -- Leader-Follower}
+
+    \begin{columns}[c]
+    
+    \column{0.48\textwidth} % Left column and width
+   
+      \begin{itemize}
+        \item two UAVs
+        \item relatively localized by UVDAR
+      \end{itemize}
+    
+    \column{0.48\textwidth} % Right column and width
+    
+    \end{columns}
+
+  \end{frame}
+
+  %%}
+
+  %%{ Seminar assignemnt #1 -- MTSPN
+
+  \begin{frame}
+    \frametitle{Seminar assignment \#2 -- MTSPN}
 
     \begin{columns}[c]
 

@@ -1,3 +1,3 @@
 # MRS UAV System presentation
 
-Download the [pdf](https://github.com/klaxalk/mrs-presentation/blob/gh-pages/presentation.pdf)
+Download the [pdf](https://github.com/ctu-mrs/mrs-presentation/blob/gh-pages/presentation.pdf)
